@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <style>
+            *{
+                /* to work with % including everything till border*/
+                box-sizing: border-box;
+            }
+            :root{
+                --aside-wide: 15%;
+                --article-wide: calc(100% - 2 * var(--aside-wide));
+
+                --header-height: 7vh;
+                --footer-height: 4vh;
+                --article-height: calc(100vh - 2*8px - var(--header-height) - var(--footer-height));
+            }
+
+            body{
+                /* Enables flex Container for complete body */
+                display: flex;
+                /* Enables multiline mode for the flexbox */
+                flex-wrap: wrap;
+            }
+
+            nav{
+                width: 100%;
+            }
+            nav.header{
+                background-color: red;
+                height: var(--header-height);
+            }
+            nav.footer{
+                background-color: black;
+                --footer-height: 4vh;
+                min-height: var(--footer-height);
+            }
+            aside{
+                width: var(--aside-wide);
+            }
+
+            aside.left{
+                background-color: green;
+            }
+            aside.right{
+                background-color: hotpink;
+            }
+            article{
+                background-color: blue;
+                width: var(--article-wide);
+                height: var(--article-height);
+            }
+
+            /* tablet */
+            @media screen and (max-width: 1000px) {
+                /* set min-hight to such a high value only for testing (because it wrapps no content) */
+
+
+                article {
+                    width: calc(70%);
+                    height: auto;
+                    min-height: calc(100vh - var(--header-height) - var(--footer-height) - 15vh - 2*8px);
+                }
+                aside{
+                    height: auto;
+                }
+                aside.left{ 
+                    width: calc(30%);
+                }
+                /* above footer */
+                aside.right{
+                    width: 100%;
+                    height: 15vh;
+                }
+            }
+            /* smartphone */
+            @media screen and (max-width: 600px) {
+                nav {
+                    min-height: 15vh;
+                }
+                aside.left{
+                    width: 100%;
+                    min-height: 20vh;
+                }
+                article {
+                    width: 100%;
+                    min-height: 80vh;
+                }
+                aside.right{
+                    width: 100%;
+                    min-height: 20vh;
+                }
+
+            }
+
+
+        </style>
+
+    </head>
+
+    <body>
+        <nav class="header"></nav>
+        <aside class="left"></aside>
+        <article></article>
+        <aside class="right"></aside>
+        <nav class="footer"></nav>
+
+    </body>
+</html>
