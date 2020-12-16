@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            /* body as grid container */
+            body {
+                margin: 0;  /* because if margin is set to default (8px), its anoying to use % scaling  */
+                display: grid;
+                grid-template-areas:
+                    'header header header header header'
+                    'left content content content right'
+                    'footer footer footer footer footer';
+            }
+
+            nav.header{
+                grid-area: header;
+                background-color: rgb(192,79,79);
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+                height: calc(7vh);
+            }
+            aside{
+                background-color: rgb(194,130,129);
+
+            }
+            aside.left{
+                grid-area: left;
+            }
+            
+            article{
+                grid-area: content;
+                background-color: rgb(106,158,189);
+                height: calc(100vh - 7vh - 4vh);
+                overflow-y:auto;
+            }
+            aside.right{
+                grid-area: right;
+            }
+            nav.footer{
+                grid-area: footer;
+                background-color: black;
+                height: 4vh;
+            }
+
+            .text{
+                font-family: "Times New Roman", Times, serif;
+            }
+
+
+            /* button */
+            input{
+                font-size: 15px;
+                font-weight: bold;
+                background-color: rgb(106,112,159);
+                border-color: white;
+                padding: 3px;
+                padding-left: 50px;
+                padding-right: 50px;
+                border-width: 3px;
+                border-radius: 50px;
+                margin-left: 15px;
+            }
+            .sidebarText{
+                text-align: center; 
+                margin: 5px;
+                color: white; 
+                font-size: 25px;
+            }
+
+            .footerList{
+                display: inline;
+                font-size: 13px;
+                text-decoration: underline;
+            }
+        
+
+        </style>
+    </head>
+    <body>
+        <nav class="header">
+            <h1 class="text" style="text-align: center; margin: 0px; color: white; font-size: 30px;">Header</h1>
+            <input type="button" value= "Home">
+            <input type="button" value= "News">
+            <input type="button" value= "Contact">
+            <input type="button" value= "About">
+        </nav>
+
+        <aside class="left">
+            <div style="margin-left: 50px; margin-right: 50px;">
+                <p class="sidebarText">left</p>
+                <p class="sidebarText">menue</p>
+                <p class="sidebarText">with</p>
+                <p class="sidebarText">many</p>
+                <p class="sidebarText">items</p>
+            </div>
+        </aside>
+
+        <article>
+            <div style="text-align: center;">
+                <p style="color: white; margin: 0;">
+                    Alle Entenvögel sind mehr oder weniger stark an ein aquatisches Leben angepasst. Ihr langer, breiter Körper gibt ihnen beim Schwimmen Auftrieb, die Füße sind mit Schwimmhäuten versehen (Ausnahme: Hawaiigans) und setzen weit hinten am Körper an. Dadurch wirkt der Gang an Land etwas ungeschickt, doch sind Entenvögel beim Laufen längst nicht so unbeholfen wie viele Seevögel. Der Hals ist oft auffällig lang – vor allem bei den Gänsen und Schwänen, aber auch bei einigen Enten.
+
+
+Höckerschwäne sind heute die in Europa bekanntesten Schwäne
+Die Größe der Entenvögel reicht von 30 cm (Zwergenten) bis 180 cm (Trompeterschwan), das Gewicht liegt zwischen 230 g und 22,5 kg. Die Flügelspannweite eines Trompeterschwans kann 240 cm betragen. Das Gefieder ist sehr dicht und wird mit dem Sekret der gut entwickelten Bürzeldrüse regelmäßig eingeölt, um es wasserabweisend zu machen. Viele Entenvögel sind außerordentlich farbenfroh. Dies trifft in besonderem Maße auf die Enten der Unterfamilie Anatinae zu, die oft ein Gefieder in leuchtenden Farben haben, während bei den Gänsen weiße, braune und graue Grundfarben überwiegen. Meistens gibt es hier einen ausgeprägten Geschlechtsdimorphismus, bei dem die Männchen prächtig gefärbt sind, die Weibchen aber unscheinbar graubraun. Am Ende der Brutzeit durchlaufen Entenvögel eine Mauser, bei der sie kurzzeitig flugunfähig werden und bei der sich Männchen mit dem so genannten Schlichtkleid oft in der Färbung vorübergehend den Weibchen angleichen. Das Jugendgefieder ähnelt meistens dem Weibchengefieder. Eine bemerkenswerte Ausnahme vom üblichen Färbungsschema ist die Paradieskasarka, die als einziger Entenvogel einen umgekehrten Geschlechtsdimorphismus mit farbenprächtigeren Weibchen hat.
+
+Oberhalb der Augen haben alle Entenvögel Salzdrüsen, durch die aufgenommenes Salz wieder ausgeschieden werden kann. Das hochschnäblige Profil mariner Arten wie der Eiderenten lässt sich damit erklären, dass dem ausgeschiedenen Salz ein besserer Abfluss über den Schnabel ermöglicht werden soll.
+
+
+Ein Entenschädel
+Entenvögel haben einen verhältnismäßig breiten Schnabel, dessen Ränder mit Lamellen versehen sind. Ein Stockentenschnabel weist oberseits 36 bis 54, unterseits 72 bis 80 Lamellen auf. Bei den Entenvögeln, die sich von Kleinstlebewesen ernähren, dienen die Lamellen als Filterapparat. Durch den halb offenen Schnabel wird Wasser eingesaugt, das dann durch die Lamellen hinausgepresst wird. Oft finden sich Modifikationen der ursprünglichen Lamellenstruktur, so bei den Sägern, bei denen die Lamellen zu kleinen Zähnen umgebildet sind, die das Festhalten der Fischbeute erleichtern. Der Schnabel der Entenvögel ist oft bunt gefärbt, vor allem bei Männchen im Brutkleid nimmt er leuchtende Farben an. Der Oberschnabel hat eine verhornte Spitze. Er ist mit Tastsinneszellen dicht besetzt.
+
+Die Flügel der Entenvögel sind kurz und kräftig. Wegen des verhältnismäßig hohen Gewichts der Vögel und der geringen Flügelfläche ist ein permanenter Flügelschlag erforderlich und es sind keine Gleitphasen möglich. Um sich in die Luft zu erheben, müssen vor allem die größeren Arten einige Meter auf der Wasseroberfläche laufen. Einmal in der Luft, können Entenvögel ausdauernd weite Strecken zurücklegen, zum Teil in Höhen bis zu 8000 m. Eine Ausnahme sind drei Arten der Dampfschiffenten, die völlig flugunfähig geworden sind.
+
+Der Schwanz ist meistens sehr kurz und viereckig, manchmal auch leicht gerundet. Nur Ruderenten sind verhältnismäßig langschwänzig. Die wichtigste Funktion des Schwanzes ist die Steuerung im Flug.
+
+Entenvögel schwimmen mit abwechselnden Schlägen der Füße. Auch tauchen können alle Entenvögel, obwohl sie diese Fähigkeit in sehr unterschiedlichem Maße nutzen. Manche tun es nur im Notfall, andere wie Tauch-, Meer- und Ruderenten bei der täglichen Nahrungssuche.
+
+Bei der Betrachtung der inneren Organe ist das vergrößerte Herz oft tauchender Enten auffällig. Der Muskelmagen ist bei den Gänsen vergrößert, um die faserhaltigen Pflanzen zerkleinern zu können; eine noch stärkere Vergrößerung findet man bei Meerenten, die Molluskenschalen aufnehmen. Die Pflanzenfresser unter den Entenvögeln haben zudem große Blinddärme.
+
+Die meisten Entenvögel sind sehr stimmfreudig. Bekannt ist hierbei das Quaken der Schwimmenten. Nur weibliche Enten quaken, während Männchen andere Laute, zum Beispiel dünne Pfeiflaute von sich geben. Gänse sind für das laute Schnattern, Pfeifgänse und Halbgänse meistens für pfeifende Lautgebungen bekannt. Am weitesten können die Rufe der Schwäne tragen. Der Trompeterschwan hat am Stimmkopf und entlang der Luftröhre blasenförmige Resonanzkammern (Bullae), die die Lautstärke der Schreie enorm verstärken. Allein die Ruderenten sind wenig stimmfreudig und abgesehen von Zisch- und Grunztönen nahezu stumm.
+                </p>
+            </div>
+        </article>
+
+        <aside class="right">
+            <div style="margin-left: 50px; margin-right: 50px;">
+                <p class="sidebarText">right</p>
+            </div>
+        </aside>
+
+        <nav class="footer">
+            <div style="display: flex; justify-content: center; align-items: baseline;">
+                <p class="sidebarText" style="display: inline;">Footer:</p>
+                <p class="sidebarText footerList" style="display: inline;">Sitemap</p>
+                <p class="sidebarText footerList" style="display: inline;">Home</p>
+                <p class="sidebarText footerList" style="display: inline;">News</p>
+                <p class="sidebarText footerList" style="display: inline;">Contact</p>
+                <p class="sidebarText footerList" style="display: inline;">about</p>
+            </div>
+        </nav>
+    </body>
+</html>

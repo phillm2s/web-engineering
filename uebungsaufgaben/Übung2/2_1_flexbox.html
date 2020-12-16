@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <style>
+            *{
+                /* to work with % including everything till border*/
+                box-sizing: border-box;
+            }
+
+            body{
+                /* Enables flex Container for complete body */
+                display: flex;
+                /* Enables multiline mode for the flexbox */
+                flex-wrap: wrap;
+            }
+
+            nav{
+                background-color: red;
+                width: 100%;
+                margin: 10px;
+                margin-bottom: 15px;
+                min-height: calc(30vh - 25px);
+
+            }
+            aside{
+                margin: 10px;
+                width: calc(15% - 20px);
+                min-height: calc(70vh - 20px);
+            }
+
+            aside.green{
+                background-color: green;
+            }
+            aside.pink{
+                background-color: hotpink;
+            }
+            article{
+                background-color: blue;
+                width: calc(70% - 20px);
+                min-height: calc(70vh - 20px);
+                margin: 10px;
+            }
+
+            /* tablet */
+            @media screen and (max-width: 900px) {
+                /* set min-hight to such a high value only for testing (because it wrapps no content) */
+                nav {
+                    margin: 5px;
+                    margin-bottom: 10px;
+                }
+                article {
+                    margin: 5px;
+                    width: calc(70% - 10px);
+                    min-height: 60rem;
+                }
+                aside{
+                    margin: 5px;
+                }
+                aside.green{
+                    width: calc(30% - 10px);
+                    min-height: 60rem;
+                }
+                aside.pink{
+                    width: 100%;
+                    min-height: 15vh;
+                }
+            }
+            /* smartphone */
+            @media screen and (max-width: 500px) {
+                nav {
+                    margin: 0px;
+                    width: 100%;
+                    min-height: 20vh;
+                }
+                aside.green{
+                    margin: 0px;
+                    width: 100%;
+                    min-height: 20vh;
+                }
+                article {
+                    margin: 0px;
+                    width: 100%;
+                    min-height: 60rem;
+                }
+                aside.pink{
+                    margin: 0px;
+                    width: 100%;
+                    min-height: 20vh;
+                }
+
+            }
+
+
+        </style>
+
+    </head>
+
+    <body>
+        <nav></nav>
+        <aside class="green"></aside>
+        <article></article>
+        <aside class="pink"></aside>
+
+    </body>
+</html>

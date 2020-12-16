@@ -1,0 +1,39 @@
+1.1. Fachliche Argumentation über Erfolgsprinzipien des WWW
+
+Mit welchen fachlichen Argumenten wurde das WWW-Proposal von TBL abgelehnt?
+
+- Evolvierbarkeit wurde als vageheit interpretiert
+- HTTP Society war der Meinung in der Entwicklung schon weiter gewesen zu sein und sah das TBL Konzept als Rückschritt
+
+
+Was sind die fachlichen Argumente, warum das WWW dennoch ein Erfolg wurde?
+
+- Hohe Evolvierbarkeit (Offenheit für Erweiterungen)
+
+
+Was wäre der Preis für die garantierte Verhinderung von “broken links”?
+
+- Es wären Zentrale Kontroller und Geschlossenheit notwendig wodurch die Offenheit und Erweiterbarkeit eingeschränkt wäre
+
+
+
+1.2. HTTP
+
+Sie bekommen im Browser den HTTP Status Code 200. Was bedeutet das?
+
+- OK, Anfrage war erfolgreich und Ergebnis wurde übertragen
+
+
+Sie bekommen im Browser den HTTP Status Code 301. Was hat das zu bedeuten?
+
+- Moved Permanently, Die Angefragte Ressource ist der Adresse nicht länger verfügbar. Neue Adresse steht in Header
+
+
+Sie bekommen im Browser den HTTP Status Code 400. Was hat das zu bedeuten? Was können Sie dagegen tun?
+
+- Bad Request, Die Anfrage war Fehlerhaft. -> Anfrage Überprüfen.
+
+
+Sie bekommen im Browser den HTTP Status Code 403. Was hat das zu bedeuten? Was können Sie dagegen tun?
+
+- Forbidden, Der Client hat keine Berechtigung die Anfrage durch zu führen. -> Authentifizierung Prüfen, Prüfen ob HTTPS URL durch HTTP aufgerufen wurde

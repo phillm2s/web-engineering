@@ -1,5 +1,5 @@
 function start_calculating_prims(){
-    var current =BigInt(3); //200000
+    var current =BigInt(3); 
     while(ture){
         while(true){
             if(isPrim(current)){
@@ -19,7 +19,7 @@ function isPrim(number){
 
 
 addEventListener(message, function(e){
-    start_calculating_prims(); //start calculating prims after main loop triggers the event
+    start_calculating_prims(); //wait for main loop starts this event
 });
 
 

@@ -1,0 +1,330 @@
+<!DocumentType html>
+
+
+<html>
+<body>
+    <script>
+
+        function identity_function(arg) {   //call like identity_function("hallo")();
+            return function(){return arg;}
+        }
+
+        function addf(x){   //call like addf(3)(5);
+            return function(y){return x+y;}
+        }
+
+        function applyf(f) {    //call with applyf(add)(3)(5);
+            return f;
+        }
+
+        //============================
+
+        function curry(bin_fun, arg){
+            return function(arg2) {return bin_fun(arg)(arg2);}
+        }
+        //add3 = curry(addf, 3);
+        //value = add3(4);
+
+
+
+        function inc(x) {
+            return addf(x)(1);
+        }
+
+        function add(a,b) {return a+b;}
+
+        function mul(a,b) {return a*b;}
+
+        function methodize(f) {
+            return function(b) {return f(this.valueOf(),b);};
+        
+        }
+
+        //Number.prototype.add = methodize(add);
+        //(5).add(3)
+
+        //===============================================
+
+        function demethodize(f,a,b) {   //demethodize(Number.prototype.add)(5, 6)
+            return function(a,b){return add(a,b)};  //wie komme ich an die in "Number.prototype.add" gespeicherte funktion?!
+        }
+        
+        function twiche(bin_fun){
+            return function(a) { return bin_fun(a,a)};
+        }
+
+        // double = twiche(add); 
+        // alert( double(11) );
+
+        function double(x){return x*2;}
+        function square(x){return x*x;}
+
+        function composeu(u1, u2) {
+            return function(x) { return u2(u1(x)); };
+        }
+
+        //alert( composeu(double,square)(3) );
+
+        function composeb(b1, b2) {
+            return function (a,b,c) { return b2( b1(a,b), c); };
+        }
+        //alert( composeb(add,mul)(2,3,5) ); //(2+3)*5
+
+        
+        function once(f) {
+            var executed = false;
+            return function(a,b) {
+                if (executed===false) {
+                    executed= true;
+                    return f(a,b);
+                }else {
+                    throw "got already called."
+                }
+            }
+        }
+
+        //add_once = once(add);
+        //add_once(5,6);
+        ///alert(add_once(3,4));
+
+
+        //============================================
+
+        function counterf(x) {
+            return {    // return a new object with given methods
+                inc : function() {return ++x;},
+                dec : function() {return --x;}
+            };
+        }
+
+        // var counter = counterf(10);
+        // alert(counter.inc());
+        // alert(counter.inc());
+        // alert(counter.dec());
+
+
+        function revocable(f) {
+            var revoked = false;
+            return {
+                invoke : function(param){
+                    if(revoked===false)
+                        f(param);
+                    else
+                        throw "Fehlerabbruch!";
+                },
+                revoke : function(){
+                    revoked = true;
+                },
+            };
+        }
+
+        // var temp = revocable(alert);
+        // temp.invoke("hello");
+        // temp.revoke();
+        // temp.invoke("hello agian");
+
+        function ArrayWrapper(array) {
+            this.array = array;
+
+            this.store = function(array) {this.array = array;}
+            this.append = function(x) {this.array.push(x)}
+            this.get = function() {return this.array;}
+        };
+
+        // var a = new ArrayWrapper(["awd",12,"xyz"]);
+        // a.append([33,44]);
+        // alert(a.get());
+
+        //===============================================
+        //================== Advanced ===================
+        //===============================================
+
+
+        function pubsub() {
+            return new function(){    //return new object
+                this.subscriber =[],
+                this.subscribe = function(f){this.subscriber.push(f); },
+                this.publish = function(x){
+                    this.subscriber.forEach(function (entry){
+                        entry(x);
+                    }); 
+                } 
+            }
+        };
+
+        // my_pubsub = pubsub();
+        // my_pubsub.subscribe(alert);
+        // my_pubsub.publish("It works!"); // alert("It works!")
+
+
+        function gensymf(char) {
+            var index=0;
+            return function(){return (char + ++index);};
+        }
+
+        // var gensym = gensymf('G');
+        // alert(gensym()) // 'G1'
+        // alert(gensym()) // 'G2'
+        // alert(gensym()) // 'G3'
+
+
+
+        function fibonaccif(a,b) {
+            return function(){
+                    ab = a+b;
+                    b=a;
+                    a=ab;
+                    return b;
+                }
+        }
+
+        // var fib = fibonaccif(0, 1);
+        // alert(fib()) // 0
+        // alert(fib()) // 1
+        // alert(fib()) // 1
+        // alert(fib()) // 2
+        // alert(fib()) // 3
+        // alert(fib()) // 5
+
+        function addg(x) {
+            var value=x;
+
+            return function inneraddg(y){
+                if(y!=undefined){
+                    value +=y;
+                    return inneraddg;
+                }
+                else{ 
+                    return value;
+                }
+            }
+        }
+        // alert( addg(3)(4)(5)() );
+        // alert( addg(1)(2)(4)(8)() );
+
+
+        function applyg(f){
+            f;
+            var values =[];
+
+            return function inner(x){
+                if(x!=undefined){
+                    values.push(x);
+                    return inner;
+                }else { //undefined
+                    value=values[0];
+                    for (i=0; i< values.length-1; i++)
+                        value = f(value, values[i+1]);
+                    return value;
+                }
+            }
+        }
+
+        //alert( applyg(add)(2)(3)(4)());
+
+
+        function m(value, source="source") {
+            return new obj(value,source);
+
+            function obj(value, source){
+                this.value = value;
+                this.source = source;
+            };
+        }
+
+        //alert( JSON.stringify(m(1)) );
+        //alert( JSON.stringify(m(Math.PI, "pi")) );
+
+        function addm(m1, m2) {
+            return new m(m1.value+m2.value , "("+m1.value+"+"+m2.value+")");
+        }
+        
+        //alert( JSON.stringify(addm(m(3), m(4))) );
+
+
+        function binarymfOLD(f,s) {
+            return function addm(m1,m2){
+                return new m(f(m1.value,m2.value) , "("+m1.value+s+m2.value+")");
+            };
+        }
+
+        //addm = binarymf(add, "+");
+        //alert( JSON.stringify(addm(m(3), m(4))) );
+
+        //=============================================================
+
+        function binarymf(f,s) {
+            return function (mo1,mo2){
+                if(typeof mo1 == "number")
+                    mo1=m(mo1);
+                if(typeof mo2 == "number")
+                    mo2=m(mo2);
+                return new m(f(mo1.value,mo2.value) , "("+mo1.value+s+mo2.value+")");
+            };
+        }
+
+        //addm = binarymf(add, "+");
+        //alert( JSON.stringify(addm(3, 4)) );
+
+
+
+        function unarymf(f,s) {
+            return function(x){
+                return m(f(x),"("+s+" "+x+")");
+            }
+        }
+
+        // squarem = unarymf(square, "square");
+        // alert( JSON.stringify(squarem(4)) );
+
+        function hyp(a,b){
+            return Math.sqrt((a*a)+(b*b));
+        }
+
+        //alert( hyp(3,4) );
+
+        function exp(array) {
+            //this "let" is super importaint!
+            //because of this strange closure behaviour, the inner calls
+            //and changes on i will also change the outer i values(like 1 static variable)
+            for (let i=1;i< array.length;i++){  
+                if(Array.isArray(array[i])===true){
+                    array[i]= exp(array[i]);
+                }
+            }
+            if(array.length===2)
+                return array[0](array[1]);  //un method
+            return array[0](array[1],array[2]); //bin method
+        };
+
+
+        //hypa = [ Math.sqrt, [ add, [mul, 3, 3], [mul, 4, 4] ] ];
+        //alert( exp(hypa) );
+        
+        //===============================
+
+        function store(value){
+            variable=value;
+        }
+
+        //var variable;
+        //store(5);
+        //alert(variable);
+
+        function identityf(value){
+            return value;
+        }
+
+        function quatre(bin_fun, idf1, idf2,  result) {
+            result( bin_fun(idf1,idf2) );
+        }
+
+        //var variable;
+        //quatre( add, identityf(3), identityf(4), store )
+        //alert( variable );
+
+        
+
+</script>
+</body>
+</html>

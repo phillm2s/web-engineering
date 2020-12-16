@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            /* body as grid container */
+            body {
+                display: grid;
+                grid-template-areas:
+                    'red'
+                    'green'
+                    'blue'
+                    'pink';
+                /* overflow: hidden;  */    /* Hide scrollbars and remove functionality */
+
+                /* Hide scrollbars and KEEP functionality for IE, Edge and Firefox */
+                -ms-overflow-style: none;  /* IE and Edge */
+                scrollbar-width: none;  /* Firefox */
+            }
+            /* Hide scrollbars and KEEP functionality for crome, safari, opera */
+            body::-webkit-scrollbar {
+                display: none;
+            }
+
+
+
+            nav{
+                grid-area: red;
+                background-color: red;
+                min-height: 20vh;
+            }
+            aside{
+                min-height: 20vh;
+            }
+            aside.green{
+                grid-area: green;
+                background-color: green;
+            }
+            article{
+                grid-area: blue;
+                background-color: blue;
+
+                min-height: 100vh;
+            }
+            aside.pink{
+                grid-area: pink;
+                background-color: hotpink;
+            }
+
+            /* bigger than smartphone */
+            @media screen and (min-width: 500px) {
+                body{
+                    grid-template-areas:
+                    'red red red red'
+                    'green blue blue blue'
+                    'pink pink pink pink';
+                }
+                nav{
+                    margin: 5px;
+                    margin-bottom: 10px;
+                }
+                aside{
+                    margin: 5px;
+                }
+                aside.green{
+                    margin: 5px;
+                }
+                article{
+                    margin: 5px;
+                }
+            }
+
+            /* bigger than tablett */
+            @media screen and (min-width: 900px) {
+                body{
+                    grid-template-areas:
+                    'red red red red red'
+                    'green blue blue blue pink';
+                }
+                nav{
+                    margin: 10px;
+                    margin-bottom: 15px;
+                    min-height: calc(30vh - 25px);
+                }
+                aside{
+                    margin: 10px;
+                    min-height: calc(70vh - 20px);
+                }
+                aside.green{
+                    margin: 10px;
+                    min-height: calc(70vh - 20px);
+                }
+                article{
+                    margin: 10px;
+                    min-height: calc(70vh - 20px);
+                }
+            }
+
+        
+
+        </style>
+    </head>
+    <body>
+        <nav></nav>
+        <aside class="green"></aside>
+        <article></article>
+        <aside class="pink"></aside>
+    </body>
+</html>

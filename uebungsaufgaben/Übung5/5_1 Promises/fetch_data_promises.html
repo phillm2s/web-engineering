@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+
+            function excecute(){
+                var text_a = null;
+                var text_b = null;
+                function concatinate_files(){
+                    if(text_a!=null && text_b!=null){   //Both promises trigger this method. but only the last one (both files loaded) will enter the condition
+                        text_a = text_a.split('\n');
+                        text_b= text_b.split('\n');
+                        console.log(text_a.length +" lines");
+                        var i=0;
+                        for(i=0;i<text_a.length;i++){
+                            console.log(text_a[i] + text_b[i]);
+                        }
+                    }
+                }
+
+                // fetch A
+                fetch('https://raw.githubusercontent.com/phillm2s/web-engineering/master/uebung5/A.txt')
+                    .then(response => response.text()
+                    .then(function(text){
+                        text_a=text;
+                        concatinate_files();
+                        })
+                    );
+                
+                //fetch B (asynchron)
+                fetch('https://raw.githubusercontent.com/phillm2s/web-engineering/master/uebung5/B.txt')
+                    .then(response => response.text()
+                    .then(function(text){
+                        text_b=text;
+                        concatinate_files();
+                        })
+                    ); 
+            }
+
+
+            excecute();
+
+
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>
