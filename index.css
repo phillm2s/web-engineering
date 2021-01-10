@@ -1,16 +1,9 @@
-*{
-    /* to work with % including everything till border*/
-    box-sizing: border-box;
-}
-:root{
-    /* declare variables here */
-}
-
 body{
     /* Enables flex Container for complete body */
     display: flex;
     /* Enables multiline mode for the flexbox */
     flex-wrap: wrap;
+    overflow-y: hidden;
 }
 
 h1, p{
@@ -33,12 +26,19 @@ h1, p{
   border-radius: 20px;
 }
 
+.flex-container-row {
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: DodgerBlue;
+}
+
 nav{
     width: 100%;
 }
 nav.header{
     background-color: #ff6501;
-    height: 7vh;
+    height:auto;    /* fit content */
+    /* height: 7vh; */
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
 }
@@ -49,7 +49,9 @@ nav.footer{
     height: 4vh;
 }
 aside{
-    width: 15%;
+    width: fit-content;
+    max-width: 25%;
+    /* min-width: fit-content; */
     background-color: #5f5f5f;
 }
 
@@ -57,7 +59,6 @@ aside{
 article{
     background-color: white;
     overflow-y: auto;
-    width: 85%;
     height: calc(100vh -  7vh - 4vh - (2 * 8px) ); /* footer- header- 2* body magine*/
 }
 
@@ -66,21 +67,20 @@ article{
 
 /* smartphone */
 @media screen and (max-width: 600px) {
-    /* hide scrolbar but keep functionality (chrome, safari, opera only) */
-    body::-webkit-scrollbar {
-        display: none;
-    }
-
-    /* Hide scrollbar for IE, Edge and Firefox */
-    body {
-        -ms-overflow-style: none;  /* IE and Edge */
-        scrollbar-width: none;  /* Firefox */
+    body{
+        overflow-y: unset;
     }
 
     nav {
         min-height: 10vh;
     }
+    .flex-container-row {
+        display: flex;
+        flex-wrap: wrap;
+        background-color: DodgerBlue;
+    }
     aside{
+        max-width: none;
         width: 100%;
         min-height: 20vh;
     }
