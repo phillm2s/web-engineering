@@ -1,6 +1,6 @@
 {
-    "name": "PWA Example",
-    "short_name": "PWA",
+    "name": "My Website",
+    "short_name": "Website",
     "start_url": ".",
     "background_color": "#c28281",
     "theme_color": "#c28281",
