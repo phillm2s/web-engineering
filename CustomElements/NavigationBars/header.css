@@ -1,0 +1,14 @@
+.headline {
+  text-align: center;
+  color:white;
+}
+
+img {
+  padding: 10px;
+  mix-blend-mode: multiply; /*transparent backround */
+  float: left; /* prevent linebreak after img */
+}
+
+img:hover {
+  opacity: 0.5;
+}

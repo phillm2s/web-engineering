@@ -12,5 +12,5 @@ self.addEventListener("install", e => {
 
 //run if a fetch request comes in
 self.addEventListener("fetch", e => { 
-    console.log("someone fetched:"+e.request.url );
+    //console.log("someone fetched:"+e.request.url );
 })

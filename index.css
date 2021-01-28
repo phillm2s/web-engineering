@@ -4,6 +4,7 @@ body{
     /* Enables multiline mode for the flexbox */
     flex-wrap: wrap;
     overflow-y: hidden;
+    margin: 8;  /* 8 is also default */
 }
 
 h1, p{
@@ -30,6 +31,7 @@ h1, p{
     display: flex;
     flex-wrap: nowrap;
     background-color: DodgerBlue;
+    width: 100%;
 }
 
 nav{
@@ -37,8 +39,8 @@ nav{
 }
 nav.header{
     background-color: #ff6501;
-    height:auto;    /* fit content */
-    /* height: 7vh; */
+    /* height:auto;    fit content */
+    height: 8vh; 
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
 }
@@ -49,17 +51,18 @@ nav.footer{
     height: 4vh;
 }
 aside{
+    min-width: 15%;
     width: fit-content;
-    max-width: 40%;
-    /* min-width: fit-content; */
+    max-width: 30%;
     background-color: #5f5f5f;
 }
 
 
 article{
+    width: 100%;
     background-color: white;
     overflow-y: auto;
-    height: calc(100vh -  7vh - 4vh - (2 * 8px) ); /* footer- header- 2* body magine*/
+    height: calc(100vh -  4vh - 8vh - (2 * 8px) ); /* footer- header- 2* body magine*/
 }
 
 
@@ -71,15 +74,17 @@ article{
         overflow-y: unset;
     }
 
-    nav {
-        min-height: 10vh;
-    }
-    .flex-container-row {
+    .flex-container-row{
         display: flex;
         flex-wrap: wrap;
         background-color: DodgerBlue;
     }
-    aside{
+    nav.header{
+        min-height: 10vh;
+        height: auto;
+    }
+
+    aside {
         max-width: none;
         width: 100%;
         min-height: 20vh;
@@ -89,6 +94,7 @@ article{
         height: auto;
         min-height: calc(100vh -  20vh - (2 * 10vh) - (2 * 8px) );
         overflow-y: unset;
+        
     }
 
 }
