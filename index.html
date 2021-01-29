@@ -9,12 +9,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="apple-touch-icon" href="image/logo192.png">
         <link rel="stylesheet" href="index.css">
+
         <!-- Web Components -->
         <script src="CustomElements/NavigationBars/header.js"></script>
         <script src="CustomElements/NavigationBars/asideNavigation.js"></script>
         <script src="CustomElements/ContentView/content.js"></script>
+    
+
+
         
-        <script src="./events.js"></script>
     </head>
     <body class="fancyscrollbar">
         
@@ -23,10 +26,10 @@
         </nav>
         <div class="flex-container-row">
             <aside>
-                <menueaside-component/>
+                <menueaside-component id="menueaside-component"/>
             </aside>
             <article class="fancyscrollbar">
-                <content-component/>
+                <content-component id="contentview"/>
             </article>
         </div>
         <nav class="footer "></nav>
@@ -43,5 +46,7 @@
                 console.log("Service worker not suported");
             }
         </script>
+
     </body>
+    <script src = "./index.js"></script>
 </html>
