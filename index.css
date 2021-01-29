@@ -69,7 +69,8 @@ article{
 
 
 /* smartphone */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 600px),
+        screen and (max-height: 800px){
     body{
         overflow-y: unset;
     }
