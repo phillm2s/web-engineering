@@ -9,19 +9,14 @@ customElements.define('einfuehrung-component',
             if(this._isInititalized){return;}
             this.shadow = this.attachShadow({mode:'open'});
 
-            //Iframe as content container to load html code from external file
-            var htmlIFrame = document.createElement("iframe");
-            htmlIFrame.src="Content/Einfuehrung/einfuehrung.html";
-            this.shadow.appendChild(htmlIFrame);
-
-            //Main css file 
-            var styles = document.createElement("link");
-            styles.rel="stylesheet";
-            styles.href="Content/content.css";
-            this.shadow.append(styles);
-
+            fetch("Content/Einfuehrung/einfuehrung.html")
+            .then(response => response.text())
+            .then(response => {
+                this.shadow.innerHTML = response;
+            });
             this._isInititalized = true;
         }
+
         attributeChangeCallbacl(attr, oldVal, newVal) {
             if (oldVal === newVal){return;}
         }

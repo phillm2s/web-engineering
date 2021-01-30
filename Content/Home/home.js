@@ -8,22 +8,30 @@ customElements.define('home-component',
         connectedCallback() {
             if(this._isInititalized){return;}
             this.shadow = this.attachShadow({mode:'open'});
-            this.shadow.innerHTML=`
-            `;
+
+            let deferredPrompt;
+            window.addEventListener('beforeinstallprompt', (e) => {
+                // Prevent the mini-infobar from appearing on mobile
+                e.preventDefault();
+                // Stash the event so it can be triggered later.
+                deferredPrompt = e;               
+            });
+         
 
             //Iframe as content container to load html code from external file
-            var htmlIFrame = document.createElement("iframe");
-            htmlIFrame.src="Content/Home/home.html";
-            this.shadow.appendChild(htmlIFrame);
-
-            //Main css file 
-            var styles = document.createElement("link");
-            styles.rel="stylesheet";
-            styles.href="Content/content.css";
-            this.shadow.append(styles);
-
+            // var htmlIFrame = document.createElement("iframe");
+            // htmlIFrame.src="Content/Home/home.html";
+            // this.shadow.appendChild(htmlIFrame);
+            fetch("Content/Home/home.html")
+            .then(response => response.text())
+            .then(response => {
+                this.shadow.innerHTML = response;
+                //add on click button listener for pwa installation dialog
+                this.shadow.getElementById("pwaInstallDialog").addEventListener("click",function(){deferredPrompt.prompt();});
+            });
             this._isInititalized = true;
         }
+
         attributeChangeCallbacl(attr, oldVal, newVal) {
             if (oldVal === newVal){return;}
         }
