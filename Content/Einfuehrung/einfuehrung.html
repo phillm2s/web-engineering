@@ -4,7 +4,55 @@
     <link rel="stylesheet" href="./einfuehrung.css">
 </head>
 <div class="container">
-    <h1 style="text-align: center;">Startseite</h1>
-    <p  class="text-font">lalalal
+    <h1 style="text-align: center;">Einführung</h1>
+    <p  class="text-font">Dieses Kapitel behandelt die Einführung in die Webentwicklung unter anwendung der Anzeigesprache <i>HTML5</i>.
     </p>
+
+    <h2>1. HTTP Statuscode</h2>
+    <p  class="text-font">Im nachfolgenden eine Liste der Wichtigsten HTTP status codes. Diese werden innerhalb 
+        des <i>response</i> oder <i></i>request</i> <i>Heders</i> gesendet.
+    </p>
+    
+    <div style="width: fit-content;">
+        <table class ="table">
+            <tr>
+            <th>Status Code</th>
+            <th>Bedeutung</th>
+            <th>Beschreibung</th>
+            </tr>
+            <tr>
+            <td>200</td>
+            <td>OK</td>
+            <td>Die Anfrage wurde erfolgreich bearbeitet und das Ergebnis der Anfrage wird in der Antwort übertragen.</td>
+            </tr>
+            <tr>
+                <td>301</td>
+                <td>Moved permanently</td>
+                <td>Die angeforderte Ressource steht ab sofort unter der im „Location“-Header-Feld angegebenen Adresse bereit (auch Redirect genannt). Die alte Adresse ist nicht länger gültig.</td>
+            </tr>
+            <tr>
+                <td>400</td>
+                <td>Bad Request</td>
+                <td>Die Anfrage-Nachricht war fehlerhaft aufgebaut.</td>
+            </tr>
+            <tr>
+                <td>403</td>
+                <td>Forbidden</td>
+                <td>Die Anfrage wurde mangels Berechtigung des Clients nicht durchgeführt, bspw. weil der authentifizierte Benutzer nicht berechtigt ist oder eine als HTTPS konfigurierte URL nur mit HTTP aufgerufen wurde.</td>
+            </tr>
+        </table>
+        <p class="reference">Quelle: https://de.wikipedia.org/wiki/HTTP-Statuscode</p> 
+    </div> 
+
+
+
+    <h2>2. Wireframe with HTML and CSS</h2>
+    <p class="text-font">Das Grundgerüst einer Webseite bildet der <i>HTML</i> Code, durch welchen die einzelnen Inhalte der Seite representiert werden.
+    </p>
+    <p class="text-font">Das genauere Aussehen dieser <i>HTML</i> elemente wird durch sogenannte <i> CSS Stylesheets</i> beschrieben.
+    </p>
+    <p class="text-font">Ein Überblick des Zusammenspiels dieser beider Technologien ist in nachfolgendem Beispiel zu sehen.
+    </p> 
+
+
 </div>

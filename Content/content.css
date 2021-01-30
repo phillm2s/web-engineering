@@ -9,6 +9,14 @@
     font-family: "Arial", "Sans-serif";
 }
 
+.reference {
+    margin-top: 1px;
+    font-family: "Arial", "Sans-serif";
+    text-align: center;
+    font-size: small;
+    font-style: italic;
+}
+
 .in-text-button {
     border-radius: 6px;
     color: white;
@@ -22,3 +30,19 @@
     border-radius: 6px;
     width: fit-content;
 }
+
+.table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+}
+
+.table td, 
+.table th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+.table tr:nth-child(even) {
+    background-color: #dddddd;
+}
+

@@ -27,7 +27,12 @@ customElements.define('home-component',
             .then(response => {
                 this.shadow.innerHTML = response;
                 //add on click button listener for pwa installation dialog
-                this.shadow.getElementById("pwaInstallDialog").addEventListener("click",function(){deferredPrompt.prompt();});
+                this.shadow.getElementById("pwaInstallDialog").addEventListener("click",function(){
+                    if(deferredPrompt!= null)
+                        deferredPrompt.prompt();
+                    else
+                        window.alert("In diesem Browser leider nicht möglich :(\rVerwendn Sie die build in Installationsfunktion ihres Browsers.");
+                });
             });
             this._isInititalized = true;
         }
