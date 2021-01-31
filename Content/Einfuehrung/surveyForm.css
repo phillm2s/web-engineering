@@ -1,0 +1,70 @@
+body {
+    background-color: #b2d6d1;
+}
+
+* {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+}
+
+.grayBox {
+    background-color: rgb(250,250,250);
+    margin: auto; 
+    width: 90%;
+}
+
+h1 {
+    text-align: center;
+    font-size: 40px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+table {
+    border: 0px solid red;
+    margin: auto;
+    width: 90%;
+}
+
+td {
+    border: 0px solid red;
+    padding: 5px;
+    vertical-align: top;
+}
+
+
+
+td.left {
+    width: 50%;
+    text-align: right;
+}
+td.right {
+    width: 50%;
+    text-align: right;
+}
+td.middle {
+    width: 1%;
+}
+
+input.text {
+    height: 25px;
+    width: 60%;
+}
+input.radio {
+    margin: 6px;
+}
+
+select {
+    background-color: rgb(240,240,240) ;
+    height: 30px;
+    width: 30%;
+}
+
+input.radio2[type=radio] {
+    margin: 6px;
+    padding: 0.3em;
+    -webkit-appearance: none;
+    outline: 0.1em solid black;
+    outline-offset: 0.1em;
+    vertical-align: bottom;
+}

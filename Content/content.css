@@ -34,6 +34,7 @@
 .table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
+    max-width: fit-content;
 }
 
 .table td, 
@@ -45,4 +46,3 @@
 .table tr:nth-child(even) {
     background-color: #dddddd;
 }
-
