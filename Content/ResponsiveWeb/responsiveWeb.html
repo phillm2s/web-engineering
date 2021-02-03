@@ -6,7 +6,7 @@
 <div class="container">
     <h1>Responsive Web</h1>
     <p  class="text-font">In diesem Kapitel geht es um die dynamische Darstellung
-        von Inhalten. D.h der Inhalt der Seite passt sich optimal der aktuellen Browsergröße an.
+        von Inhalten. D.h der Inhalt der Seite passt sich optimal in Positionierung und Größe der aktuellen Browserauflösung an.
     </p>
     <p class="text-font">Dazu werden im Wesentlichen zwei Techniken verwendet. <i>Flexbox Lyout</i> und <i>Grid Layout</i>.
     </p>
@@ -21,7 +21,7 @@
     </p>
     <h2>2. Flexbox Layout</h2>
     <htmlviewer-component src="Content/ResponsiveWeb/Beispiel/Flexbox/flexbox.html"></htmlviewer-component>
-    <p class="text-font">Ändern sie Die Größe des Fensters um den Effekt zu sehen.
+    <p class="text-font">Ändern sie die Größe des Fensters um den Effekt zu sehen.
     </p>
     
     <codebox-component title="flexBox.html" src="Content/ResponsiveWeb/Beispiel/Flexbox/flexbox.html"></codebox-component>
@@ -38,5 +38,45 @@
         </p>
     </div>
 
+
+    <h2>3. Grid Layout</h2>
+    <p  class="text-font">Beim Grid Layout wird ein bestimmter Bereich auf Basis einer Gitterstruktur dargestellt.
+    </p>
+    <p  class="text-font">Neben dem Grid Container, welcher die darzustellenden Elemente Grupiert,
+        gibt es die 3 Bereiche <i>Columns</i>, <i>Rows</i> und <i>Gaps</i>.
+    </p>
+    
+    <div style="width: fit-content; margin-top: 30px;"></div>
+        <img class="illustration" src="Content\ResponsiveWeb\Beispiel\Grid\columns.png" alt="Columns">
+        <p class="reference">Grid Columns<br/>Quelle: [03.02.2021] https://www.w3schools.com/css/css_grid.asp</p> 
+    </div>
+    <div style="width: fit-content; margin-top: 30px;"></div>
+        <img class="illustration" src="Content\ResponsiveWeb\Beispiel\Grid\rows.png" alt="Rows">
+        <p class="reference">Grid Rows<br/>Quelle: [03.02.2021] https://www.w3schools.com/css/css_grid.asp</p> 
+    </div>
+    <div style="width: fit-content; margin-top: 30px;"></div>
+        <img class="illustration" src="Content\ResponsiveWeb\Beispiel\Grid\gaps.png" alt="Rows">
+        <p class="reference">Grid Gaps<br/>Quelle: [03.02.2021] https://www.w3schools.com/css/css_grid.asp</p> 
+    </div>
+
+    <p  class="text-font">Das nachhfolgende Codebeispiel veranschaulicht die dynamische Funktionsweise.
+        Durch das verändern der Seitengröße verändert sich die größe der einzelnen <i>Items</I> im gleichen Verhältnis.
+    </p>
+
+    <htmlviewer-component src="Content\ResponsiveWeb\Beispiel\Grid\grid.html"></htmlviewer-component>
+
+    <codebox-component title="grid.html" src="Content\ResponsiveWeb\Beispiel\Grid\grid.html"></codebox-component>
+
+    <codebox-component src="Content\ResponsiveWeb\Beispiel\Grid\gridTemplateArea.css.txt"></codebox-component>
+    <p  class="text-font">In diesem Beispiel wurde die Positioniertung durch <i>grid-template-areas</i> vorgenommen.
+        Diese Schreibweise ist bedoners lesbar.
+    </p>
+
+    <p  class="text-font">Eine Alternative könnte wiefolgt aussehen.
+    </p>
+    <codebox-component src="Content\ResponsiveWeb\Beispiel\Grid\gridLines.css.txt"></codebox-component>
+    <p  class="text-font">Die Komponenten werden einzelnd ausgerichtet. Beispielsweise nimmt der Header,
+        also item1 die gesammte erste Zeile ein, also (Spaltenlinie 1 bis Spaltenlinie 2).  
+    </p>
 
 </div>

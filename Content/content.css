@@ -61,3 +61,11 @@ h1{
 .table tr:nth-child(even) {
     background-color: #dddddd;
 }
+
+.illustration{
+    max-width: 90%;
+    height: auto;
+    /* center */
+    display: block;
+    margin: 0 auto;
+}

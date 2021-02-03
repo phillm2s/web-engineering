@@ -1,0 +1,19 @@
+.grid-container {
+    /* instead of  "grid-template-areas:" */
+    grid-template-columns: auto auto auto;
+    ...
+}
+
+.item1 {
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+
+.item2 {
+    grid-row-start: 2; 
+    grid-row-end: 4;
+}
+.item5 {
+    grid-column-start: 2;	
+    grid-column-end: 4;
+}
