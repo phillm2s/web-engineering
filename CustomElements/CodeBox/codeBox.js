@@ -24,28 +24,25 @@ customElements.define('codebox-component',
             mainDiv.className="main-div";
             mainDiv.style.alignSelf = "center";
 
-            ////create p element whith special style, append it to the main div
-            // var title = document.createElement("p");
-            // title.textContent = this.title;
-            // title.className ="title";
-            // mainDiv.appendChild(title);
+            //button as title with fold option
+            if(title!=null){    //if no title is set the component is unfoldet
+                var fold = document.createElement("button");
+                fold.innerText=title;
+                fold.className="title";
 
-            var fold = document.createElement("button");
-            fold.innerText=title;
-            fold.className="title";
-
-            mainDiv.appendChild(fold);
+                mainDiv.appendChild(fold);
+            }
 
             //fold unfold code way more easyer to inserte/remove content then update all styles
             var codeBackup="";
             var foldDiv;
-            fold.addEventListener("click", foldDiv=function(){
+            fold?.addEventListener("click", foldDiv=function(){
                 if(codeBackup===""){  
                     fold.innerHTML=title+" &#9660;"//set errow DOWN
                     codeBackup= code.innerHTML;
                     code.innerHTML="";
                 }else{
-                    fold.innerHTML=title+" &#x25B2;"//set errow DOWN
+                    fold.innerHTML=title+" &#x25B2;"//set errow UP
                     code.innerHTML=codeBackup;
                     codeBackup="";
                 }
@@ -56,14 +53,19 @@ customElements.define('codebox-component',
                 code.textContent = this.textContent;
             }else{
                 fetch(src)
-                .then(response => response.text())
+                .then(response => {
+                    if(response.ok)
+                        return response.text();
+                    else
+                        return "File not found.";
+                })
                 .then(response =>{
                     var lines = response.split("\n");
                     for(let i=0; i< lines.length; i++){
                         code.innerHTML += "<xmp>"+(i+1)+". "+lines[i]+"</xmp>";
                     }
-                    foldDiv(); //default folded
-                    //code.innerHTML = "<xmp>"+response+"</xmp>";
+                    if(fold!=null)
+                        foldDiv(); //default folded
                 })
             }
 
