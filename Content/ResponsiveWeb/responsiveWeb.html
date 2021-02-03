@@ -1,0 +1,42 @@
+
+<head>
+    <link rel="stylesheet" href="Content/content.css">
+    <link rel="stylesheet" href="Content/ResponsiveWeb/ResponsiveWeb.css">
+</head>
+<div class="container">
+    <h1>Responsive Web</h1>
+    <p  class="text-font">In diesem Kapitel geht es um die dynamische Darstellung
+        von Inhalten. D.h der Inhalt der Seite passt sich optimal der aktuellen Browsergröße an.
+    </p>
+    <p class="text-font">Dazu werden im Wesentlichen zwei Techniken verwendet. <i>Flexbox Lyout</i> und <i>Grid Layout</i>.
+    </p>
+
+    <h2>1. Entwicklungsstrategien</h2>
+    <p class="text-font">Es gibt zwei verschiedenen Entwicklungsansätze.
+        Bei <i>Desktop-First</i> wird von einer "großen" Desktopanwendung ausgegangen.
+        Ist das Desktoplayout stimming, wird die Auflösung verändert und das Design für Tabletts bzw. Smarthones angepasst.
+    </p>
+    <p class="text-font">Die <i>Mobile-First</i> Strategie funktioniert analog.
+        Die Entwicklung beginnt in der Mobilen darstellung und es wird im nachhinein für die Desktopanwendung optimiert.
+    </p>
+    <h2>2. Flexbox Layout</h2>
+    <htmlviewer-component src="Content/ResponsiveWeb/Beispiel/Flexbox/flexbox.html"></htmlviewer-component>
+    <p class="text-font">Ändern sie Die Größe des Fensters um den Effekt zu sehen.
+    </p>
+    
+    <codebox-component title="flexBox.html" src="Content/ResponsiveWeb/Beispiel/Flexbox/flexbox.html"></codebox-component>
+    <p class="text-font">Das div <i>flex-container</i> fasst die einzelnen Komponenten zusammen.
+        Die CSS Propery <i>flex-wrap: wrap;</i> bewirkt, das elemente die nicht mehr in die Zeile passen in die nächste
+        verschoben werden sollen.
+    </p>
+    <p  class="text-font">Die Eigenschaft<i>flex-wrap: nowrap;</i> würde ein stauchen der Elemente verursachen.
+        Es gibt aber noch mehr Optionen.
+    </p>
+
+    <div class="info-box">
+        <p  class="text-font">Es können belibig viele Flexcontainer ineinander verschachtelt werden.
+        </p>
+    </div>
+
+
+</div>
