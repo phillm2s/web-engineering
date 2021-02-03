@@ -11,6 +11,7 @@ customElements.define('content-component',
 
             //define component pathes(script pathes)
             var scriptsrcS = ["Content/Home/home.js",
+                "Content/ResponsiveWeb/responsiveWeb.js",
                 "Content/Einfuehrung/einfuehrung.js"];
 
             //add script tag for each path
@@ -29,6 +30,8 @@ customElements.define('content-component',
                 componentTag = "home-component"
             else if(navigationContentID==="1")
                 componentTag = "einfuehrung-component"
+            else if(navigationContentID==="2")
+                componentTag = "responsiveweb-component"
             else {
                 console.log("Warning: No matching component for NavigationContentID: "+navigationContentID)
                 return;

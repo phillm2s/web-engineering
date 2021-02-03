@@ -6,6 +6,8 @@
 
 .text-font {
     margin: 8px;
+    margin-top: 12px;
+    margin-bottom: 12px;
     font-family: "Arial", "Sans-serif";
 }
 
@@ -25,6 +27,8 @@
 }
 
 .info-box {
+    margin-top: 16px;
+    margin-bottom: 16px;
     border-style: solid;
     border-color: lightblue;
     border-radius: 6px;
