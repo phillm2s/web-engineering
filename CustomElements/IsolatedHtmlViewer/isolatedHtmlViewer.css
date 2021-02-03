@@ -1,0 +1,14 @@
+.main-div{
+    max-width: fit-content;
+    padding: 20px;
+    border-radius: 5px;
+    border-color: black;
+    border-style: solid;
+    border-width: 2px;
+    /* align horizontal center */
+    margin: auto;
+    margin-top: 35px;
+    resize: both;
+    overflow: auto;
+    overflow: hidden;
+}
