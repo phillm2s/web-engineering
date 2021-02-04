@@ -1,0 +1,6 @@
+Kapitel 02: https://www.w3schools.com/css/css_grid.asp
+            -   https://www.w3schools.com/css/tryit.asp?filename=trycss_grid_display_grid
+            -   https://www.w3schools.com/css/tryit.asp?filename=trycss_grid_lines
+
+
+Webseite: https://davidwalsh.name/style-textarea-resizer

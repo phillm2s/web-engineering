@@ -55,25 +55,27 @@
     <p class="text-font">Ein Überblick des Zusammenspiels dieser beider Technologien ist anhand des nachfolgenden Beispiels zu sehen.
     </p>
 
-    <div style="width: fit-content;">
+    <div style="width: fit-content; margin: auto;">
         <img class="illustration" src="Content/Einfuehrung/Beispiel/surveyForm.png" alt="SurveyForm">
         <p class="reference">Screenshot, SurveyForm</p> 
     </div>
     
-    <codebox-component title="surveyForm.html" src="Content/Einfuehrung/Beispiel/surveyForm.html.txt"></codebox-component>
+    <codebox-component title="surveyForm.html" src="Content/Einfuehrung/Beispiel/surveyForm.html"></codebox-component>
     <p class="text-font">Unser Wireframe kann durch den folgenden HTML5 code in <i>surveyForm.html</i> erstellt werden.
         Dieser enthält allerdings bisher nur das Defaultmäßige Aussehen der eingebundenen HTML Elemente.
     </p>
 
-    <codebox-component src="Content/Einfuehrung/Beispiel/header.html.txt"></codebox-component>
+    <codebox-component><!--
+    <link rel="stylesheet" href="./surveyForm.css">
+    --></codebox-component>
     <p class="text-font">Um das Defaultlayout unserer Elemente und deren konkretere Positionierung zu ändern referenzieren wir im <i>header</i> einen <i>CSS Stylesheet</i> file.
     </p>
 
-    <codebox-component title="surveyForm.css" src="Content/Einfuehrung/Beispiel/surveyForm.css.txt"></codebox-component>
+    <codebox-component title="surveyForm.css" src="Content/Einfuehrung/Beispiel/surveyForm.css"></codebox-component>
 
     <div class="info-box">
         <p class="text-font">Eine Besonderheit besteht in der Positionierung mittels <i>table</i>.
-            Zeitgemäßer wäre die verwendung von <i>Flexbox</i> oder <i>Grid</i> Layouts, welche im nächsten Kapitel ausführlich behandelt werden.
+            Für komplexere, dynamische Darstellungen empfiehlt sich die verwendung von <i>Flexbox</i> oder <i>Grid</i> Layouts, welche im nächsten Kapitel ausführlich behandelt werden.
         </p>
     </div>  
 

@@ -67,14 +67,49 @@
 
     <codebox-component title="grid.html" src="Content\ResponsiveWeb\Beispiel\Grid\grid.html"></codebox-component>
 
-    <codebox-component src="Content\ResponsiveWeb\Beispiel\Grid\gridTemplateArea.css.txt"></codebox-component>
+    <codebox-component><!-- 
+    <style>
+    /* https://www.w3schools.com/css/tryit.asp?filename=trycss_grid_layout_named */
+    .grid-container {
+        /*...*/
+        grid-template-areas:
+            'header header header header header header'
+            'menu main main main right right'
+            'menu footer footer footer footer footer';
+        /*...*/
+        }
+    </style>
+     --></codebox-component>
     <p  class="text-font">In diesem Beispiel wurde die Positioniertung durch <i>grid-template-areas</i> vorgenommen.
         Diese Schreibweise ist bedoners lesbar.
     </p>
 
     <p  class="text-font">Eine Alternative könnte wiefolgt aussehen.
     </p>
-    <codebox-component src="Content\ResponsiveWeb\Beispiel\Grid\gridLines.css.txt"></codebox-component>
+    <codebox-component><!--
+    <style>
+        /* https://www.w3schools.com/css/tryit.asp?filename=trycss_grid_lines */
+        .grid-container {
+            /* instead of  "grid-template-areas:" */
+            grid-template-columns: auto auto auto;
+            /* ... */
+        }
+
+        .item1 {    /* Header */
+            grid-column-start: 1;
+            grid-column-end: 4;
+        }
+
+        .item2 {    /* menue */
+            grid-row-start: 2; 
+            grid-row-end: 4;
+        }
+        .item5 {    /* Footer */
+            grid-column-start: 2;	
+            grid-column-end: 4;
+        }
+    </style>
+    --></codebox-component>
     <p  class="text-font">Die Komponenten werden einzelnd ausgerichtet. Beispielsweise nimmt der Header,
         also item1 die gesammte erste Zeile ein, also (Spaltenlinie 1 bis Spaltenlinie 2).  
     </p>
