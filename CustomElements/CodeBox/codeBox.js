@@ -50,7 +50,11 @@ customElements.define('codebox-component',
 
             var code = document.createElement("p");
             if(src===null){
-                code.textContent = this.textContent;
+                var lines = this.innerHTML.split("\n");
+                //first and last line are always emty ->skip
+                for(let i=1; i< lines.length-1; i++){
+                    code.innerHTML += "<xmp>"+(i)+". "+lines[i]+"</xmp>";
+                }
             }else{
                 fetch(src)
                 .then(response => {
