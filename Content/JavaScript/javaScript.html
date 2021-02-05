@@ -4,8 +4,8 @@
     <link rel="stylesheet" href="Content/Home/home.css">
 </head>
 <div class="container">
-    <h1>Java Script</h1>
-    <p class="text-font">Javascript ist die Programmiersprache des Webs. Sie kann vom Browser 
+    <h1>JavaScript</h1>
+    <p class="text-font">JavaScript ist die Programmiersprache des Webs. Sie kann vom Browser 
         direkt interpretiert werden und bedarf keiner Kompilierung.
     </p>
     <div class="info-box">
@@ -33,4 +33,199 @@
     --></codebox-component>
     <p class="text-font">Oder in einer externen <i>.js</i> Datei durch das <i>src</i> Attribut referenziert werden.
     </p>
+
+    <p class="text-font" style="margin-top: 30px;">Es folgen eine Reihe JavaScript Funktionen samt Code sowie eine kurzen Erläuterungen.
+        Bei den Funktionen handelt es sich um die Übungsaufgaben des Kapitels <i>3. JavaScript</i> unter <i>https://kaul.inf.h-brs.de/wem/#app-content-4-2</i>.
+    </p>
+
+    <h2>1. Funktionen in JavaScript</h2>
+    <p class="text-font">Es folgen eine Reihe JavaScript Funktionen ink. Code sowie eine kurzen Erläuterungen.
+    </p>
+
+    <codebox-component><!--
+    function identity_function(arg) {   //call like identity_function("hallo")();
+        return function(){return arg;}
+    }
+    --></codebox-component>
+    <p class="text-font">Funktion, die ein Argument als Parameter entgegen nimmt und eine Funktion zurück gibt,
+        die dieses Argument zurück gibt.
+    </p>
+
+
+
+    <codebox-component><!--
+    function addf(x){   //call like addf(3)(5);
+        return function(y){return x+y;}
+    }
+    --></codebox-component>
+    <p class="text-font">Eine Addier-Funktion <i>addf()</i>, so dass <i>addf(x)(y)</i> genau x + y zurück gibt.
+        (Es erfolgen also zwei Funktionsaufrufe. <i>addf(x)</i> liefert eine Funktion, die auf y angewandt wird.)
+    </p>
+
+
+
+    <codebox-component><!--
+    function twiche(bin_fun){
+        return function(a) { return bin_fun(a,a)};
+    }
+    // double = twiche(add); 
+    // alert( double(11) );
+    --></codebox-component>
+    <p class="text-font">Eine Funktion <i>twice()</i>, die eine binäre Funktion in eine unäre Funktion umwandelt,
+        die den einen Parameter zweimal weiter reicht.
+    </p>
+
+
+
+    <codebox-component><!--
+    function double(x){return x*2;}
+    function square(x){return x*x;}
+
+    function composeu(u1, u2) {
+        return function(x) { return u2(u1(x)); };
+    }
+    //alert( composeu(double,square)(3) );
+    --></codebox-component>
+    <p class="text-font">Eine Funktion composeu(), die zwei unäre Funktionen in eine einzelne unäre Funktion transformiert,
+        die beide nacheinander aufruft. Also ergibt <i>composeu(double, square)(3)</i>  36.
+    </p>
+
+
+    <codebox-component><!--
+    function once(f) {
+        var executed = false;
+        return function(a,b) {
+            if (executed===false) {
+                executed= true;
+                return f(a,b);
+            }else {
+                throw "got already called."
+            }
+        }
+    }
+
+    //add_once = once(add);
+    //add_once(5,6);
+    ///alert(add_once(3,4));
+    --></codebox-component>
+    <p class="text-font">Eine Funktion once(), die einer anderen Funktion nur einmal erlaubt,
+        aufgerufen zu werden. z.B. <i>add_once = once(add);</i> gefolgt von <i>add_once(3, 4)</i> ergibt beim ersten mal 7,
+        beim zweiten aufrufen von <i>add_once(3, 4)</i> wird jedoch eine Exception geworfen.
+    </p>
+    <div class="info-box">
+    <p class="text-font">Hier fällt sofort ein Ungewöhnliches Verhalten ins Auge.
+        Die mit <i>var</i> instanziierte Variablen behält ihre Gültigkeit für die innere Methode, auch wenn diese bereits durchlaufen wurde.
+        Diese Technik nennt man in JavaScript <i>closure</i>. Eine Funktion kann neben seinem eigenen auch immer auf den darüberliegenden Scope
+        zugreifen, auch wenn dieser eine bereits durchlaufende Methode ist.
+    </p>
+    </div>
+
+
+    <codebox-component><!--
+    function ArrayWrapper(array) {
+        this.array = array;
+
+        this.store = function(array) {this.array = array;}
+        this.append = function(x) {this.array.push(x)}
+        this.get = function() {return this.array;}
+    };
+
+    // var a = new ArrayWrapper(["awd",12,"xyz"]);
+    // a.append([33,44]);
+    // alert(a.get());
+    --></codebox-component>
+    <p class="text-font">Da es in JavaScript nativ keine <i>private</i> Variablen gibt, müssen wir ein wenig triksen,
+        indem wir die zu schützende Variable in einen seperaten Scope auslagern.
+        Wir können einen neuen <i>Array Wrapper</i> mit einem belibigen Array instanziieren. Der zugriff auf dieses
+        Array geschieht dann ausschlißlich durch die obrig definierten Methoden. Auch hier kommt wieder <i>closure</i> zum Einsatz.
+    </p>
+
+
+    <h2>2. Fortgeschrittenere Funktionen in JavaScript</h2>
+
+    <codebox-component><!--
+    function pubsub() {
+        return new function(){    //return new object
+            this.subscriber =[],
+            this.subscribe = function(f){this.subscriber.push(f); },
+            this.publish = function(x){
+                this.subscriber.forEach(function (entry){
+                    entry(x);
+                }); 
+            } 
+        }
+    }
+
+    // my_pubsub = pubsub();
+    // my_pubsub.subscribe(alert);
+    // my_pubsub.publish("It works!"); //==> alert("It works!")
+    --></codebox-component>
+    <p class="text-font">Ein <i>Publish Subscribe Muster</i>. Subscriber können Methoden zum PublishSubscribe Objekt hinzufügen, z.B. (<i>alert</i>).
+        Wird im Anschluss die Methode <i>publish(param)</i> ausgeführt, so werden auch die zuvor übergebenen Methoden (<i>alert(param)</i>) ausgeführt.
+    </p>
+
+
+    <codebox-component><!--
+    function fibonaccif(a,b) {
+        return function(){
+                ab = a+b;
+                b=a;
+                a=ab;
+                return b;
+            }
+    }
+
+    // var fib = fibonaccif(0, 1);
+    // alert(fib()) // 0
+    // alert(fib()) // 1
+    // alert(fib()) // 1
+    // alert(fib()) // 2
+    // alert(fib()) // 3
+    // alert(fib()) // 5
+    --></codebox-component>
+    <p class="text-font">Die Funktion <i>fibonaccif(param1,param2)</i> gibt eine Funktion zurück, welche wiederum mit jedem Aufruf die nächste Fibonaccizahl zurück gibt.
+    </p>
+
+
+    <codebox-component><!--
+    function addg(x) {
+        var value=x;
+
+        return function inneraddg(y){
+            if(y!=undefined){
+                value +=y;
+                return inneraddg;
+            }
+            else{ 
+                return value;
+            }
+        }
+    }
+    // alert( addg(3)(4)(5)() );    //returns 12
+    // alert( addg(1)(2)(4)(8)() ); //returns 15
+    --></codebox-component>
+    <p class="text-font">Eine Funktion die sich selbst zurück gibt und den übergebenen Wert zu ihrem speicher addiert, bis ein leerer Aufruf erfolgt.
+    </p>
+
+
+
+
+    <codebox-component><!--
+    function m(value, source="source") {
+        return new obj(value,source);
+
+        function obj(value, source){
+            this.value = value;
+            this.source = source;
+        };
+    }
+
+    //alert( JSON.stringify(m(1)) );    // {"value": 1, "source": "1"}
+    //alert( JSON.stringify(m(23, "age")) ); // {"value": 26, "source": "age"}
+    --></codebox-component>
+    <p class="text-font">Eine Funktion <i>m</i>, welche ein Objekt aus einem value und einem source String erzeugt.
+    </p>
+
+
+
 </div>
