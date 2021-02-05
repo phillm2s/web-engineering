@@ -10,6 +10,15 @@ customElements.define('menueaside-component',
             if(this._isInititalized){return;}
             this.shadow = this.attachShadow({mode:'open'});
 
+            var container = document.createElement("div");
+            container.id="container";
+
+            var particleeIFrame = document.createElement("iframe"); // <iframe src="CustomElements/NavigationBars/ParticlesIFrame/particles.html" frameBorder="0" title="particles">
+            particleeIFrame.src ="CustomElements/NavigationBars/ParticlesIFrame/particles.html";
+            particleeIFrame.setAttribute("frameBorder","0");
+            particleeIFrame.title="particles";
+            container.appendChild(particleeIFrame);
+
             var ul= document.createElement("ul");
             ul.className="navigation";
 
@@ -31,11 +40,12 @@ customElements.define('menueaside-component',
             this.as[3].text ="4. DOM";
             
 
-            this.shadow.appendChild(ul);
+            container.appendChild(ul);
 
             var styles = document.createElement("link");
             styles.rel="stylesheet";
             styles.href="CustomElements/NavigationBars/asideNavigation.css";
+            this.shadow.append(container);
             this.shadow.append(styles);
             this._isInititalized = true;
         }

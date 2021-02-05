@@ -9,15 +9,14 @@ customElements.define('header-component',
             if(this._isInititalized){return;}
             this.shadow = this.attachShadow({mode:'open'});
             this.shadow.innerHTML=`
-            <a href="./index.html"> <img src="image/home.jpg" alt="Trulli" width="60" height="60"> </a>
-            <h1 class="headline">WEB Engineering</h1>
+                <head>
+                    <link rel="stylesheet" href="CustomElements/NavigationBars/header.css">
+                </head>
+                <body>
+                    <a href="./index.html"> <img src="image/home.jpg" alt="Trulli" width="60" height="60"> </a>
+                    <h1 class="headline">WEB Engineering</h1>
+                </body>
             `;
-
-
-            var styles = document.createElement("link");
-            styles.rel="stylesheet";
-            styles.href="CustomElements/NavigationBars/header.css";
-            this.shadow.append(styles);
             this._isInititalized = true;
         }
 

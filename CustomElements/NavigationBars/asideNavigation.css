@@ -7,8 +7,13 @@
     margin: 0; 
     list-style: none;
     background: rgb(207, 103, 55);
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.8;
+    /* 2*padding */
+    width: calc(100% - 20px); 
   }
-
   
   .navigation a {
     text-decoration: none;
@@ -25,7 +30,19 @@
     cursor: pointer;
   }
 
-
   .navigation li:last-of-type a {
     border-bottom: none;
+  }
+
+  iframe{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    display: block;
+    position: relative;
+  }
+  #container{
+    height: 100%;
+    width: 100%;
+    position: relative;
   }
