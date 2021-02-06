@@ -6,4 +6,5 @@ Kapitel 03: https://developer.mozilla.org/de/docs/Gecko-DOM-Referenz/Einf%C3%BCh
             https://javascript.info/basic-dom-node-properties
             
 
-Webseite: https://davidwalsh.name/style-textarea-resizer
+Webseite:   https://davidwalsh.name/style-textarea-resizer        //resizer icon
+            https://codepen.io/jkiss/pen/OVEeqK              //particle effects

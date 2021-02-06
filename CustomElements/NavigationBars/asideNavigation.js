@@ -1,4 +1,3 @@
-
 customElements.define('menueaside-component',
     class extends HTMLElement {
         constructor() {
@@ -22,8 +21,8 @@ customElements.define('menueaside-component',
             var ul= document.createElement("ul");
             ul.className="navigation";
 
-            var len=4;
-            this.as = [4];
+            var len=10;
+            this.as = [len];
             for (let i=0 ;i<len;i++){ //create li elements
                 let li = document.createElement("li");
                 this.as[i] = document.createElement("a");
@@ -38,6 +37,12 @@ customElements.define('menueaside-component',
             this.as[1].text ="2. Responsives Web";
             this.as[2].text ="3. JavaScript";
             this.as[3].text ="4. DOM";
+            this.as[4].text ="5. Asyncron";
+            this.as[5].text ="6. Node & npm & Deno";
+            this.as[6].text ="7. Modular Web";
+            this.as[7].text ="8. PWA";
+            this.as[8].text ="9. Vue";
+            this.as[9].text ="10. WebAssembly";
             
 
             container.appendChild(ul);

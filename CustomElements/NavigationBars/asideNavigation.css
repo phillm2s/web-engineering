@@ -7,9 +7,7 @@
     margin: 0; 
     list-style: none;
     background: rgb(207, 103, 55);
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
     opacity: 0.8;
     /* 2*padding */
     width: calc(100% - 20px); 
@@ -39,7 +37,9 @@
     height: 100%;
     margin: auto;
     display: block;
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
   #container{
     height: 100%;

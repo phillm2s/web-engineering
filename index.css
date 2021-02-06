@@ -88,7 +88,8 @@ article{
     aside {
         max-width: none;
         width: 100%;
-        min-height: 20vh;
+        height: fit-content;
+        
     }
     article {
         width: 100%;
