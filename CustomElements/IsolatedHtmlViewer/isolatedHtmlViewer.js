@@ -25,16 +25,19 @@ customElements.define('htmlviewer-component',
             if(src===null){
                 mainDiv.innerHTML = this.innerHTML;
             }else{
-                fetch(src)
-                .then(response => {
-                    if(response.ok)
-                        return response.text();
-                    else
-                        return "File not found.";
-                })
-                .then(response =>{
-                    mainDiv.innerHTML = response;
-                })
+                var iframe= document.createElement("iframe");
+                iframe.src=src;
+                iframe.onload=function(){
+                    var body = iframe.contentWindow.document.body;
+                    var height =  body.offsetHeight+20; //20=offset
+                    var width =  body.offsetWidth+20;
+                    mainDiv.style.width= width+"px";
+                    mainDiv.style.height= height+20+"px";
+                    // iframe.width= width+"px";
+                    // iframe.height= height+"px";
+                };
+                iframe.scrolling="no";
+                mainDiv.appendChild(iframe);
             }
 
             this.shadow.append(mainDiv);
@@ -48,4 +51,4 @@ customElements.define('htmlviewer-component',
             //remove listener
         }
     }
-);  
+);

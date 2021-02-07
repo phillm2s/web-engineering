@@ -44,6 +44,7 @@ h1{
     background-color: lightblue;
     border-radius: 6px;
     width: fit-content;
+    box-shadow: 5px 5px 3px grey;
 }
 
 .table {

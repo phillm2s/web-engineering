@@ -1,0 +1,26 @@
+
+<body>
+    <h1>Interaktives DOM Beispiel</h1>
+    <h2 id="msg">Kaffe schmeckt ...</h2>
+    <button id="1">überhaupt nicht</button>
+    <button id="2">ganz ok</button>
+    <button id="3">nach Liebe</button>
+
+    <script>
+        window.onload=function(){
+            var msg= document.getElementById("msg");
+            document.getElementById("1")
+                .addEventListener("click",function(){
+                    msg.textContent = "Sie haben sich wohl verklickt."
+            });
+            document.getElementById("2")
+                .addEventListener("click",function(){
+                    msg.textContent = "Kaffee schmeckt ganz ok."
+            });
+            document.getElementById("2")
+                .addEventListener("click",function(){
+                    msg.textContent = "Kaffee schmeckt nach Liebe <3."
+            });
+        };
+    </script>
+</body>

@@ -19,7 +19,7 @@
     <p class="text-font">Die einzelnen DOM elemente sind in einer Baumstruktur angeordnet.
         Ein wichtiger Unterschied besteht dabei in der unterscheidung der Typen.
         Ein HTML <i>Node</i> kann beispielsweise auch ein <i>Text</i> oder ein <i>Element</i> sein.
-        Oder aber auch einer nur ein <i>Node</i>. Stichwort: Vererbung 
+        Oder aber auch einfach nur ein <i>Node</i>. Stichwort: Vererbung 
     </p>
     <div style="width: fit-content; margin: auto;">
         <img class="illustration" src="Content/DOM/Beispiele/DOMTypes.png" alt="DomTypes">
@@ -36,9 +36,42 @@
     <h2>1. DOM Manipulation</h2>
     <p class="text-font">Wie komme ich an das DOM Objekt?
     </p>
-    <p class="text-font">Mittels DOM kann auch auf die CSS stylesheets eines HTML Dokuments zugegriffen werden, auch wenn dieses in einer
-        externen css Datei ausgelagert ist.
+    <p class="text-font">Auf das gerenderte DOM kann mit dem Schlüssewort <i>document</i> zugegriffen werden. Dieses Objekt bietet wiederum
+        eine Reihe von Methoden für den spezifischen Zugriff auf das gewünschte Element.
     </p>
+    <p class="text-font">Die wichtigsten sind dabei:
+    </p>
+
+    <table class ="table">
+        <tr>
+            <th>Methode</th>
+            <th>Beschreibung</th>
+        </tr>
+        <tr>
+            <td>getElementById(id)</td>
+            <td>Gibt das <i>Element</i> mit der entsprechenden ID zurück.</td>
+        </tr>
+        <tr>
+            <td>getElementsByClassName(name)</td>
+            <td>Gibt eine iterierbare <i>HTMLCollection</i> mit allen <i>Elements</i> die den übergebenen <i>class</i> Namen tragen zurück.</td>
+        </tr>
+        <tr>
+            <td>getElementsByTagName(tag)</td>
+            <td>Gibt eine <i>HTMLCollection</i> mit allen <i>Elements</i> mit dem übergebenen <i>tag</i> zurück. Wird tag="*" Übergeben,
+                werden alle <i>Element</i> Objekte des Dokuments zurückgegeben.</td>
+        </tr>
+    </table>
+
+    </p>
+    <p class="text-font">Diese Methoden waren nur solche, die direkt auf das <i>document</i> Objekt angewendet werden.
+        Dazu kommt noch eine Vielzahl an Methoden um sich in der Verschachtelten Struktur des DOMs zu bewegen. Durch kind Elemente zu iterieren
+        oder deren Attribute zu ändern.
+    </p>
+
+    <p class="text-font">Im folgenden ein interaktives Beispiel wie der HTML DOM mittels JavaScript verändert werden kann. 
+    </p>
+    <htmlviewer-component src="Content/DOM/Beispiele/jsDomManipulation.html"></htmlviewer-component>
+
     
 
 </div>
