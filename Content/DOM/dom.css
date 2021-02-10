@@ -1,0 +1,10 @@
+@import url("/customColors.css");
+
+.example-box{
+    border-style: solid;
+    border-radius: 7px;
+    width: 80%; margin: auto;
+    border-color: var(--orange);
+    margin-top: 12px;
+    padding: 10px;
+}

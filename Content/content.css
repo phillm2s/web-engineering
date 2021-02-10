@@ -1,10 +1,11 @@
 /* Main Container */
 .container {
     margin: 8px;
+    /* overflow-y: hidden; */
 }
 
 h2{
-    margin-top: 30px;
+    margin-top: 70px;
     margin-bottom: 10px;
 }
 
@@ -26,6 +27,7 @@ h1{
     text-align: center;
     font-size: small;
     font-style: italic;
+    word-break: break-all;
 }
 
 .in-text-button {
@@ -44,13 +46,14 @@ h1{
     background-color: lightblue;
     border-radius: 6px;
     width: fit-content;
+    max-width: 80%;
     box-shadow: 5px 5px 3px grey;
 }
 
 .table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    max-width: fit-content;
+    max-width: 80%;
 }
 
 .table td, 
@@ -70,3 +73,18 @@ h1{
     display: block;
     margin: 0 auto;
 }
+
+@media screen and (max-width: 600px), screen and (max-height: 650px){
+    .table{
+        max-width: 100%;
+        width: 100%;
+        padding: 2px;
+        font-size: small;
+    }
+    .table td,
+    table th {
+        padding: 2px;
+    }
+    
+}
+

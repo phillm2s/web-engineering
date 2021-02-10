@@ -14,7 +14,8 @@ customElements.define('content-component',
                 "Content/Einfuehrung/einfuehrung.js",
                 "Content/ResponsiveWeb/responsiveWeb.js",
                 "Content/JavaScript/javaScript.js",
-                "Content/DOM/dom.js"];
+                "Content/DOM/dom.js",
+                "Content/Asynchron/asynchron.js"];
 
             //add script tag for each path
             for(let i=0 ; i < scriptsrcS.length;i++){
@@ -38,6 +39,8 @@ customElements.define('content-component',
                 componentTag = "js-component"
             else if(navigationContentID==="4")
                 componentTag = "dom-component"
+            else if(navigationContentID==="5")
+                componentTag = "asynchron-component"
             else {
                 console.log("Warning: No matching component for NavigationContentID: "+navigationContentID)
                 return;
