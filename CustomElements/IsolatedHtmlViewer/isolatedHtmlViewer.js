@@ -16,6 +16,8 @@ customElements.define('htmlviewer-component',
 
             //-------CUSTOM ATTRIBUTES ----------
             var src= this.getAttribute("src"); //load text content from this source
+            var hightOffsett= parseInt(this.getAttribute("height-offsett") || "0");
+            var widthOffsett= parseInt(this.getAttribute("width-offsett") || "0");
             //this.textContent = this.textContent;
             
             //create div as "main" container
@@ -29,12 +31,9 @@ customElements.define('htmlviewer-component',
                 iframe.src=src;
                 iframe.onload=function(){
                     var body = iframe.contentWindow.document.body;
-                    var height =  body.offsetHeight+20; //20=offset
-                    var width =  body.offsetWidth+20;
-                    mainDiv.style.width= width+"px";
-                    mainDiv.style.height= height+20+"px";
-                    // iframe.width= width+"px";
-                    // iframe.height= height+"px";
+
+                    mainDiv.style.width= body.offsetWidth+widthOffsett+40+"px";
+                    mainDiv.style.height= body.offsetHeight+hightOffsett+40+"px";
                 };
                 iframe.scrolling="no";
                 mainDiv.appendChild(iframe);

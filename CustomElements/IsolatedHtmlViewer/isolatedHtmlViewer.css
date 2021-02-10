@@ -1,11 +1,14 @@
 .main-div{
-    width: fit-content;
-    height: fit-content;
+    /* width: fit-content;
+    height: fit-content; */
+    width: auto;
+    height: auto;
+    max-width: calc(85% - 20px - 20px); 
+    min-height: 50px;
+    min-width: 50px;
     position: relative;
     /* right and left padding */
-    max-width: calc(85% - 20px - 20px); 
     padding: 20px;
-    padding-bottom: 30px;
     border-radius: 5px;
     border-color: black;
     border-style: solid;
