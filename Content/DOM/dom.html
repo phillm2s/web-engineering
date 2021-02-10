@@ -57,21 +57,48 @@
         </tr>
         <tr>
             <td>getElementsByTagName(tag)</td>
-            <td>Gibt eine <i>HTMLCollection</i> mit allen <i>Elements</i> mit dem übergebenen <i>tag</i> zurück. Wird tag="*" Übergeben,
+            <td>Gibt eine <i>HTMLCollection</i> mit allen <i>Elements</i> mit dem übergebenen <i>tag</i> zurück. Wird tag="*" übergeben,
                 werden alle <i>Element</i> Objekte des Dokuments zurückgegeben.</td>
         </tr>
     </table>
 
     </p>
-    <p class="text-font">Diese Methoden waren nur solche, die direkt auf das <i>document</i> Objekt angewendet werden.
-        Dazu kommt noch eine Vielzahl an Methoden um sich in der Verschachtelten Struktur des DOMs zu bewegen. Durch kind Elemente zu iterieren
-        oder deren Attribute zu ändern.
+    <p class="text-font">Nodes könne naber auch mittels JavaScript direkt über das DOM erstellt werden.
+        Die Methode <i>document.createElement("tag")</i> erstellt ein entsprechendes Element.
+        Dessen Attribute können im Anschluss einfach über element.setAttribute("name",value) angepasst werden.
+        Außerdem können auch diesem Element wieder belibig viele Elemente hinzugefügt werden <i>appendChild(newElement)</i>.
+        Eine Rustikalere Methode um auf den Inhalt eines Elements in Textform zuzugreifen ist die <i>.innerHTML</i> Eigenschaft.
+        Dazu kommt noch eine Vielzahl an Methoden um sich in der Verschachtelten Struktur des DOMs zu bewegen. Durch kind Elemente
+        zu iterieren, Events zuzuweisen und vieles mehr. Dies ist also nur die Spitze des DOM Eisbergs.
     </p>
 
+    <h2>2. Einfaches Beispiel</h2>
     <p class="text-font">Im folgenden ein interaktives Beispiel wie der HTML DOM mittels JavaScript verändert werden kann. 
     </p>
     <htmlviewer-component src="Content/DOM/Beispiele/jsDomManipulation.html"></htmlviewer-component>
-
     
+    <codebox-component title="domExample.html" src="Content/DOM/Beispiele/jsDomManipulation.html"></codebox-component>
+    <p class="text-font">Durch den im <i>script</i> tag defineirten JavaScript code haben wir jedem <i>button</i> einen <i>clickListener</i>
+        hinzugefügt. Um dies zu tun mussten wir die entsprechenden buttons anhand der <i>id</i>`s identifizieren.
+        Den zu ändernden Text in <i>h2</i> haben wir hingegen über seinen <i>tag</i> identifiziert. Da es im Dokument nur ein Element mit diesem tag gibt,
+        hat es den index "0" in der Liste der <i>h2</i> tags. 
+    </p>
+
+
+    <h2>3. Komplexeres Beispiel</h2>
+    <p class="text-font">Das nächste Beispiel zeigt eine Rednerliste, in welche neue Redner hinzugefügt werden können.
+        Jedem redner ist ein individueller Timer ink. start/stop Button zugeordnet. Wird ein neuer Redner hinzugefügt, so begint dessen Timer automatisch.
+        Es kann immer nur ein Timer gleichzeitig laufen. 
+    </p>
+
+    <htmlviewer-component src="Content\DOM\Beispiele\rednerliste.html" height-offsett="130"></htmlviewer-component>
+    <codebox-component title="rednerliste.html" src="Content\DOM\Beispiele\rednerliste.html"></codebox-component>
+
+    <p class="text-font">Der <i>Hinzufügen</i> Button triggered ein Event, welches einen neuen Redner erstellt.
+        Das bedeutet es wird ein <i>li</i> Listen Element mit dem i, TExtfeld befindlichen namen erstellt und zur Rednerliste hinzugefügt.
+        Für jeden Redner wird ein <i>Timer</i> Objekt instanziiert. Dieser Timer besteht aus den entsprechende
+        steuerFunktionen (start, stop) einem <i>p</i> Element um die zeit zu repräsentieren sowie einem Start Stop Button.
+        Durch <i>closure</i> ist der Timer ausschließlich über diese Steuerfunktionen verwendbar. Die Variablen sind isoliert.
+    </p>
 
 </div>
