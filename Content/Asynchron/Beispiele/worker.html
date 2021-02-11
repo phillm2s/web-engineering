@@ -1,0 +1,53 @@
+<html>
+    <head>
+    </head>
+
+    <body>
+        <h1>Webworker example</h1>
+        <p>Click the Button to calculate the amount of primnumbers from 0 to the given Number
+            in another thread using a web worker.</p>
+        <input id="input" type="number" value=200000></input> <button id="but">calculate</button>
+        
+        <div style="display: flex; margin-top:10px; height: 30px; width: 400px; height: 30px; background-color: grey;">
+            <div id="bar" style="height: 100%; width: 0%; background-color: grey;"></div>
+            <div style="height: 100%; width: 5%; background-color: green;"></div>
+        </div>
+        <p id="result"></p>
+    </body>
+    <script>
+        function Bar(){
+            var barHtml = document.getElementById("bar");
+            var procent = 0;
+            var intervallID= null;
+            var direction = -1;
+
+            this.start = function(){
+                intervalID = setInterval(function(){
+                        if(procent <=0 || procent>=95)
+                            direction=direction *-1;
+                        procent+=direction;
+                        barHtml.style.width=procent+"%";
+                    }, 16); //60 Hz
+            }
+            this.stop = function(){
+                clearInterval(intervalID);
+            }
+        }
+
+        var bar = new Bar();
+        var but = document.getElementById("but")
+
+        const worker = new Worker("./worker.js");
+        worker.addEventListener("message", function(e){
+            document.getElementById("result").textContent = "Primnumbers: "+ e.data;
+            bar.stop();
+            but.disabled=false;
+        });
+
+        but.addEventListener("click",function(){
+            but.disabled=true;
+            bar.start();
+            worker.postMessage(document.getElementById("input").value);
+        })
+    </script>
+</html>

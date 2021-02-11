@@ -4,6 +4,11 @@ Kapitel 02: https://www.w3schools.com/css/css_grid.asp
 
 Kapitel 03: https://developer.mozilla.org/de/docs/Gecko-DOM-Referenz/Einf%C3%BChrung
             https://javascript.info/basic-dom-node-properties
+
+
+kapitel 05: https://javascript.info/basic-dom-node-properties
+            https://www.educative.io/edpresso/what-is-an-event-loop-in-javascript
+            
             
 
 Webseite:   https://davidwalsh.name/style-textarea-resizer        //resizer icon

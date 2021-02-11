@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>I Promise this will work</h1>
+        <P>Lädt asynchron 2 Textfiles und Konkateniert diese Zeilenweise</P>
+        <p>Beide Files haben 10 Zeilen.</br>File 1 mit den Buchstaben A bis J, File 2 Zahlen von 1 bis 10.</p>
+        <button id="conc">Concatinate</button>
+        <ul id="list">
+        </ul>
+
+    </body>
+    <script>
+        function execute(){
+            var text_a = null;
+            var text_b = null;
+            function concatinate_files(){
+                //Both promises trigger this method. but only the last one (both files loaded) will enter the condition
+                if(text_a!=null && text_b!=null){
+                    text_a = text_a.split('\n');
+                    text_b= text_b.split('\n');
+                    var i=0;
+                    var list = document.getElementById("list");
+                    for(i=0;i<text_a.length;i++){
+                        console.log(text_a[i] + text_b[i]);
+                        var li = document.createElement("li");
+                        li.textContent = text_a[i] + text_b[i];
+                        list.appendChild(li);
+                    }
+                }
+            }
+
+            // fetch A
+            fetch('text1.txt')
+                .then(response => response.text()
+                .then(function(text){
+                    text_a=text;
+                    concatinate_files();
+                    })
+                );
+            
+            //fetch B (asynchron)
+            fetch('text2.txt')
+                .then(response => response.text()
+                .then(function(text){
+                    text_b=text;
+                    concatinate_files();
+                    })
+                ); 
+        }
+        var click =function() {
+            execute();
+            document.getElementById("conc").removeEventListener('click',click);
+        };
+        document.getElementById("conc").addEventListener("click",click);
+    </script>
+</html>
