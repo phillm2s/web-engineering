@@ -5,38 +5,6 @@
 </head>
 <div class="container">
     <h1>DOM</h1>
-    <div style="width: fit-content;">
-        <p class="text-font">Das <i>Document Object Model</i> kurz DOM ist eine Programierschnitstelle für HTML und XML
-            Dokumente.
-        </p>
-        <p class="reference">Quelle: [05.02.2021] https://developer.mozilla.org/de/docs/Gecko-DOM-Referenz/Einf%C3%BChrung</p>
-    </div>
-
-    <p class="text-font">Es bietet die Möglichkeit auf die verschachtelte Struktur des Elements zuzugreifen und so gezielt belibige
-        teile zu verändern oder zu lesen. Dadurch ist es Scriptsprachen wie JavaScript möglich, mit dem durch HTML vom Webbrowser gerenderten
-        inhalt zu Interagierren. Das bedeutet das gezielt auf der Webseite angezeigte Inhalte verändert werden können, ohne
-        das eine <b>ganze</b> Seite neu gerendert werden muss.
-    </p>
-    <p class="text-font">Die einzelnen DOM elemente sind in einer Baumstruktur angeordnet.
-        Ein wichtiger Unterschied besteht dabei in der unterscheidung der Typen.
-        Ein HTML <i>Node</i> kann beispielsweise auch ein <i>Text</i> oder ein <i>Element</i> sein.
-        Oder aber auch einfach nur ein <i>Node</i>. Stichwort: Vererbung 
-    </p>
-    <div style="width: fit-content; margin: auto;">
-        <img class="illustration" src="Content/DOM/Beispiele/DOMTypes.png" alt="DomTypes">
-        <p class="reference">Quelle: [05.02.2021] https://javascript.info/basic-dom-node-properties</p>
-    </div>
-
-
-    <div class="info-box">
-        <p class="text-font">Mittels DOM kann auch auf die CSS stylesheets eines HTML Dokuments zugegriffen werden, auch wenn dieses in einer
-            externen css Datei ausgelagert sind.
-        </p>
-    </div>
-
-
-
-
 
 
     <h2>1. Browser-Architektur</h2>
@@ -82,10 +50,41 @@
 
 
 
+    <h2>3. DOM</h2>
+    <div style="width: fit-content;">
+        <p class="text-font">Das <i>Document Object Model</i> kurz DOM ist eine Programierschnitstelle für HTML und XML
+            Dokumente.
+        </p>
+        <p class="reference">Quelle: [05.02.2021] https://developer.mozilla.org/de/docs/Gecko-DOM-Referenz/Einf%C3%BChrung</p>
+    </div>
+
+    <p class="text-font">Es bietet die Möglichkeit auf die verschachtelte Struktur des Elements zuzugreifen und so gezielt belibige
+        teile zu verändern oder zu lesen. Dadurch ist es Scriptsprachen wie JavaScript möglich, mit dem durch HTML vom Webbrowser gerenderten
+        inhalt zu Interagierren. Das bedeutet das gezielt auf der Webseite angezeigte Inhalte verändert werden können, ohne
+        das eine <b>ganze</b> Seite neu gerendert werden muss.
+    </p>
+    <p class="text-font">Die einzelnen DOM elemente sind in einer Baumstruktur angeordnet.
+        Ein wichtiger Unterschied besteht dabei in der unterscheidung der Typen.
+        Ein HTML <i>Node</i> kann beispielsweise auch ein <i>Text</i> oder ein <i>Element</i> sein.
+        Oder aber auch einfach nur ein <i>Node</i>. Stichwort: Vererbung 
+    </p>
+    <div style="width: fit-content; margin: auto;">
+        <img class="illustration" src="Content/DOM/Beispiele/DOMTypes.png" alt="DomTypes">
+        <p class="reference">Quelle: [05.02.2021] https://javascript.info/basic-dom-node-properties</p>
+    </div>
+
+
+    <div class="info-box">
+        <p class="text-font">Mittels DOM kann auch auf die CSS stylesheets eines HTML Dokuments zugegriffen werden, auch wenn dieses in einer
+            externen css Datei ausgelagert sind.
+        </p>
+    </div>
 
 
 
-    <h2>3. DOM Manipulation</h2>
+
+
+    <h2>4. DOM Manipulation</h2>
     <p class="text-font">Wie komme ich an das DOM Objekt?
     </p>
     <p class="text-font">Auf das gerenderte DOM kann mit dem Schlüssewort <i>document</i> zugegriffen werden. Dieses Objekt bietet wiederum
@@ -128,7 +127,7 @@
 
 
 
-<h2>4. innerHTML VS outerHTML VS innerText VS textContent</h2>
+<h2>5. innerHTML VS outerHTML VS innerText VS textContent</h2>
     <p class="text-font">Besonders häufig verwendete und leicht zu verwechslende Eigenschaften von <i>Nodes</i> werden im Folgenden erklärt.
     </p>
 
@@ -182,22 +181,13 @@
 
     <div class="example-box">
 
-        <h3>innerHTML</h3>
-        <p class="text-font">Zugriff auf den <b>inneren</b> HTML Content eines HTMLElements (beinhaltet auch einfachen Text).
-        </p>
-
-        <h3>outerHTML</h3>
-        <p class="text-font">Zugriff auf den <b>gesamten</b> HTML Content eines HTMLElement (ink. Kindelemente).
-        </p>
-
-        <h3>innerText</h3>
-        <p class="text-font">Zugriff auf <b>sichtbare</b> Textinhalt für <i>HTMLElement</i>'s.
-            <i>.innerText</i> ist außerdem performancelastiger als <i>.textContent</i>.
-        </p>
-
-        <h3>textContent</h3>
-        <p class="text-font">Zugriff auf den <b>gesamten</b> Textinhalt ink. Formatierung (Zeilenumbrüche) für <i>Node</i>'s.
-        </p>
+        <ul class="text-font">
+            <li><b style="font-size: large;">innerHTML:</b> Zugriff auf den <b>inneren</b> HTML Content eines HTMLElements (beinhaltet auch einfachen Text).</li>
+            <li><b style="font-size: large;">outerHTML:</b> Zugriff auf den <b>gesamten</b> HTML Content eines HTMLElement (ink. Kindelemente).</li>
+            <li><b style="font-size: large;">innerText:</b> Zugriff auf <b>sichtbare</b> Textinhalt für <i>HTMLElement</i>'s.
+                <i>.innerText</i> ist außerdem performanzlastiger als <i>.textContent</i>.</li>
+            <li><b style="font-size: large;">textContent:</b> Zugriff auf den <b>gesamten</b> Textinhalt ink. Formatierung (Zeilenumbrüche) für <i>Node</i>'s.</li>
+        </ul>
     </div>
     <p class="reference">Quelle: [10.02.2021] vgl. https://stackoverflow.com/questions/35213147/difference-between-textcontent-vs-innertext</p> 
 
@@ -206,7 +196,7 @@
 
 
 
-    <h2>5. Einfaches Beispiel</h2>
+    <h2>6. Einfaches Beispiel</h2>
     <p class="text-font">Im Folgenden ein interaktives Beispiel wie der HTML DOM mittels JavaScript verändert werden kann. 
     </p>
     <htmlviewer-component src="Content/DOM/Beispiele/jsDomManipulation.html"></htmlviewer-component>
@@ -223,7 +213,7 @@
 
 
 
-    <h2>6. Komplexeres Beispiel</h2>
+    <h2>7. Komplexeres Beispiel</h2>
     <p class="text-font">Das nächste Beispiel zeigt eine Rednerliste, in welche neue Redner hinzugefügt werden können.
         Jedem redner ist ein individueller Timer ink. start/stop Button zugeordnet. Wird ein neuer Redner hinzugefügt, so begint dessen Timer automatisch.
         Es kann immer nur ein Timer gleichzeitig laufen. 
