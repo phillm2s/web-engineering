@@ -2,14 +2,18 @@ Kapitel 02: https://www.w3schools.com/css/css_grid.asp
             -   https://www.w3schools.com/css/tryit.asp?filename=trycss_grid_display_grid
             -   https://www.w3schools.com/css/tryit.asp?filename=trycss_grid_lines
 
+
 Kapitel 03: https://developer.mozilla.org/de/docs/Gecko-DOM-Referenz/Einf%C3%BChrung
             https://javascript.info/basic-dom-node-properties
 
 
-kapitel 05: https://javascript.info/basic-dom-node-properties
+Kapitel 05: https://javascript.info/basic-dom-node-properties
             https://www.educative.io/edpresso/what-is-an-event-loop-in-javascript
             
-            
+
+Kapitel 06: https://kaul.inf.h-brs.de/wem/#app-content-7-0&04_dom=page-27&05_async=page-105&06_node=page-18
+            -   https://stackoverflow.com/questions/23959868/differences-between-node-environment-and-browser-javascript-environment //original quelle
+
 
 Webseite:   https://davidwalsh.name/style-textarea-resizer        //resizer icon
             https://codepen.io/jkiss/pen/OVEeqK              //particle effects

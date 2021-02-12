@@ -1,0 +1,129 @@
+
+<head>
+    <link rel="stylesheet" href="Content/content.css">
+
+</head>
+<div class="container">
+    <h1>Node & npm & Deno</h1>
+
+
+
+
+    <h2>1. Node.js</h2>
+    <p class="text-font">Um die Vorteile von JavaScript wie non-blocking IO und die hohe Nebenläufigkeit durch
+        das Event Driven Design auch serverseitig einsetzen zu können wurde die Google V8 Engine
+        in ein <i>c++</i> Programm eingebettet. So entstand die Serverseitig einsetzbare Laufzeitumgebung node.js.
+    </p>
+    <p class="text-font">Ehemals serverseitig blockierende
+        aufrufe durch <i>php</i>wie Datenbankabfragen konnten seitdem durch asynchrones JavaScript ersetzt werden.
+    </p>
+
+    <div class="info-box">
+        <p class="text-font">Viele Asyncrone Methoden unter node.js haben auch ein syncrones Equivalent.
+        </p>
+    </div>
+
+    <p class="text-font">Durch die verwendung von JavaScript auf Client und Server Seite sind JavaScript Entwickler
+        vielseitig einsetzbar. Trotzdem ist node.js nur selten auf aktuellen Webservern vertreten.
+        Dies wird allerdings auch dadurch beinflusst, dass einigen node.js Server hinter <i>Apache</i> Proxys versteckt sind.
+    </p>
+
+    <p class="text-font">Zwischen der Server und Client Seitigen javaScript Entwicklung gibt es einige grundlegende unterschiede.
+    </p>
+    <div style="width: fit-content;">
+        <table class ="table">
+            <tr>
+                <th>Browser</th>
+                <th>node.js</th>
+            </tr>
+            <tr>
+                <td>Globales Objekt heißt <i>window</i></td>
+                <td>Globales Objekt heißt <i>global</i></td>
+            </tr>
+            <tr>
+                <td><i>var x</i> ⇒ <i>window.x</i></td>
+                <td><i>var x</i> ⇒ keine Property in <i>global</i></td>
+            </tr>
+            <tr>
+                <td>Keine Module (bis ES6 import)</td>
+                <td>Module mit <i>require()</i> importieren</td>
+            </tr>
+            <tr>
+                <td>DOM via <i>document</i>-Objekt</td>
+                <td>Kein <i>document</i>-Objekt, kein DOM (bis auf jsdom)</td>
+            </tr>
+            <tr>
+                <td>Sicherheit via Sandbox (kein Zugriff auf lokales Filesystem / Betriebssystem) </td>
+                <td>Ohne Sicherheitsbeschränkungen </td>
+            </tr>
+            <tr>
+                <td>Entwicklung für "alle" Browser</td>
+                <td>Entwicklung für genau eine node.js Version</td>
+            </tr>
+        </table>
+        <p class="reference" style="margin-bottom: 0px;">Quelle: vgl. [12.02.2021] https://kaul.inf.h-brs.de/wem/#app-content-7-0&04_dom=page-27&05_async=page-105&06_node=page-18</p>
+        <p class="reference">Originalquelle: https://stackoverflow.com/questions/23959868/differences-between-node-environment-and-browser-javascript-environment</p>
+    </div> 
+
+
+
+    <p class="text-font">Node.js verwendet eine angepasste <i>Eventloop</i>.
+        Mit <i>setImmediate(callback)</i> kann ein Callback noch <b>vor</b> Ablauf des
+        aktuellen Eventloop Zykluses ausgeführt werden.
+    </p>
+    <div class="info-box">
+        <p class="text-font">Vorsicht vor <b>Livelogs</b>! Rekursive Callbackaufrufe können eine nie leer werdende <i>Microtaskqueue</i>
+            zufolge haben, sodass die <i>Macrotasks</i> der Eventloop nichtmehr abgearbeitet werden können.
+        </p>
+    </div>
+
+    <h3>Beispiel</h3>
+    <p class="text-font">Das nachfolgende node.js Kommandozeilen programm, erzeugt eine Textdatei, welche
+        als Kommandozeilen Parameter einen Wert erwartet, welcher die Anzahl der zu erzeugenden Zeilen mit der
+        jeweiligen Zeilennummer und einem "." erwartet. Der Übergabeparameter kann auch einen "_" enthalten, sodass
+        10_000 = 10000.
+    </p>
+
+
+    <codebox-component title="fileGen.js" src="Content\NodeNpmDeno\Beispiele\fileGen.js"></codebox-component>
+
+
+
+
+    <h2>2. npm</h2>
+    <p class="text-font">Npm steht für <b>N</b>ode <b>P</b>ackage <b>M</b>anager und wird verwendet um node.js Pakete zu
+        verwalten. Um die verschiedenen Versionen von node.js selbst zu verwalten kann der
+        nvm (<b>N</b>ode <b>V</b>ersion <b>M</b>anager) verwendet werden. Beide Manager lassen sich nach der Installation
+        via Kommandozeile verwenden.
+    </p>
+
+    <p class="text-font">Geladene Pakete können mittels <i>CommonJS</i> in den JavaScript Namespace geladen werden.<br>
+        <b>Kurzscreibweise:</b> <i>const package = requiere("packageName");</i> .<br>
+        <i>requiere()</i> kapselt eine Reihe komplexerer Prozesse die im Hintergrund durchgeführt werden.
+    </p>
+
+    <p class="text-font">Seit ES6 gibt es auch die Alternative Packete durch<br>
+        <i>import {functionA, functionB} from "./myFile.mjs"</i><br>
+        zu importieren. die zu importierenden Funktionen müssen dabei um das <i>export</i> Schlüsselwort
+        erweitert werden.
+    </p>
+
+    <div class="info-box">
+        <p class="text-font">Die beiden Methoden sollten allerdings nicht vermischt werden.<br>
+            <b>Kein</b> <i>requiere</i> in <i>.mjs</i>.</br>
+            <b>Kein</b> <i>import</i> in <i>.js</i>.
+        </p>
+    </div>
+    
+
+
+
+
+
+    <h2>3. Express.js</h2>
+
+
+
+    <h2>4. deno.land</h2>
+   
+</div>
