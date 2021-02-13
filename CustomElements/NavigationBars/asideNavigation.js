@@ -37,7 +37,7 @@ customElements.define('menueaside-component',
             this.as[1].text ="2. Responsives Web";
             this.as[2].text ="3. JavaScript";
             this.as[3].text ="4. DOM";
-            this.as[4].text ="5. Asyncron";
+            this.as[4].text ="5. Asynchron";
             this.as[5].text ="6. Node & npm & Deno";
             this.as[6].text ="7. Modular Web";
             this.as[7].text ="8. PWA";

@@ -77,16 +77,51 @@
         </p>
     </div>
 
-    <h3>Beispiel</h3>
+    <h3>Beispiel 1</h3>
     <p class="text-font">Das nachfolgende node.js Kommandozeilen programm, erzeugt eine Textdatei, welche
         als Kommandozeilen Parameter einen Wert erwartet, welcher die Anzahl der zu erzeugenden Zeilen mit der
         jeweiligen Zeilennummer und einem "." erwartet. Der Übergabeparameter kann auch einen "_" enthalten, sodass
-        10_000 = 10000.
+        10_000 als 10000 interpretiert wird. 
     </p>
-
 
     <codebox-component title="fileGen.js" src="Content\NodeNpmDeno\Beispiele\fileGen.js"></codebox-component>
 
+    <h3>Beispiel 2</h3>
+    <p class="text-font">In diesem Beispiel wird die Performance zweier Methoden zum laden von Files praktisch verglichen.
+    </p>
+    <p class="text-font">Es werden jeweils 2 Dateien mit 1 Millionen Zeilen mit der jeweiligen Methode asynchron geladen und zeilenweise konkatiniert.
+        Die Beiden Vorgänge werden dann anhand der Benötigten Zeit verglichen.
+    </p>
+
+    <p class="text-font">Methode 1: Laden der beider Files durch <i>.readFile</i>.
+    </p>
+    <codebox-component title="merge_files.js" src="Content\NodeNpmDeno\Beispiele\merge_files.js"></codebox-component>
+
+
+    <p class="text-font">Methode 2: Laden beider Files durch <i>createReadStream</i>.
+    </p>
+    <codebox-component title="merge_streams.js" src="Content\NodeNpmDeno\Beispiele\merge_streams.js"></codebox-component>
+    <p class="text-font">Die Stream API ist besonders performant wenn es darum geht sehr große Files zu laden bzw teile des Files (<i>chunks</i>)</i> zu 
+        verwenden noch bevor der vollständige File geladen wurde. In unserem Beispiel heißt das, der Merge und Schreib -Process kann schon beginnen, soald von beiden Files
+        jeweils der erste <i>chunk</i> geladen wurde.
+    </p>
+
+    <p class="text-font">Performance-Messung  (10 Wiederholungen):
+    </p>
+    <table class ="table">
+        <tr>
+            <th>Methode</th>
+            <th>Zeit</th>
+        </tr>
+        <tr>
+            <td>merge_files</td>
+            <td>420ms - 470ms</i></td>
+        </tr>
+        <tr>
+            <td>merge_streams</td>
+            <td>250ms - 270ms</td>
+        </tr>
+    </table>
 
 
 
@@ -121,9 +156,48 @@
 
 
     <h2>3. Express.js</h2>
+    <p class="text-font">Express.js ist ein beliebtes node Modul, zum hosten eines minimalistischen Webservers, mit
+        nur wenigen Zeilen Code. Um das Express.js Modul verwenden zu können müssen erst
+        einige <a href="https://expressjs.com/de/starter/installing.html" target="_blank" rel="noopener noreferrer">
+        <button class="in-text-button">Einrichtungsschritte</button></a> durchlaufen
+        werden. <!-- https://stackoverflow.com/questions/15551779/open-link-in-new-tab-or-window -->
+    </p>
+    <p class="text-font">Der Folgende beispielhafte Webserver stellt eine einfache weboberfläche bereit.
+        Die Post Methode veranschaulicht die Client zu Server kommunikation mittels JSON Nachrichten.
+    </p>
+    <codebox-component title="expressServer.js" src="Content\NodeNpmDeno\Beispiele\expressServer.js"></codebox-component>
 
 
 
     <h2>4. deno.land</h2>
+    <p class="text-font">Bei deno handelt es sich um eine JavaScript & TypeScript Laufzeitumgebung vom selben Entwickler (Ryan Dahl), wie node.
+        Da bei node.js Securityaspekte wie der Systemzugriff vernachlässigt wurden, wollte der Entwickler dies bei deno besser machen.
+    </p>
+    <div style="width: 100%; display: flex; flex-wrap: wrap;">
+        <div style="width: fit-content;">
+            
+            <p class="text-font">Die wichtigsten Eigenschaften von Deno im Überblick:
+            </p>
+            <ul class="text-font">
+                <li>Keine Installation notwendig (aber möglich).</li>
+                <li>Noch Sehr neu (wenig Packete).</li>
+                <li>Unterstützt JavaScript.</li>
+                <li>Unterstützt TypeScript.</li>
+                <li>Unterstützt WebAssembly.</li>
+                <li>Unterstützt TypeScript.</li>
+                <li>ES6 Import funktionalität.</li>
+                <li>Abhängigkeiten via URL's.</li>
+                <li>Integrierter Packetmanager (kein npm notwendig).</li>
+                <li>Besonders Browserkompatibel.</li>
+                <li>Breiter Web API support.</li>
+                <li>Konfiguierbare Dateisystem Securitypolicy.</li>
+                <li>Systemzugriffe über spezielle Kanäle</li>
+            </ul>
+        </div>
+        <div style="width: 50%;">
+            <img class="illustration" style="width: 50%; max-width: 300px; min-width: 150px;" src="Content\NodeNpmDeno\deno.png" alt="denno">
+            <p class="reference">Bild Quelle: [13.02.2021] https://github.com/topics/denoland</p>
+        </div>
+    </div>
    
 </div>
