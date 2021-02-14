@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <style>
+            #editor{
+                width: 600px;
+                height: 400px;
+                background-color: lightgray;
+                border-radius: 4px;
+            }
+            #toolbar{
+                width: 600px;
+                height: 40px;
+                padding-top: 10px;
+                border-radius: 4px;
+                background-color: orange;
+            }
+            #content-div{
+                border-radius: 5px;
+                background-color: white;
+                width: calc(100% - 20px);
+                height: calc(100% - 20px - 50px);
+                margin: 10px;
+            }
+            #content{
+                height: 100%;
+                margin: 0;
+                padding: 2px;
+                overflow: scroll;
+            }
+            .icon1{
+                padding: 0;
+                text-align: center;
+                width: 30px;
+                height: 30px;
+                margin-right: 20px;
+                font-family: Arial;
+                font-size: large;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>WYSIWYG Editor</h1>
+        <div id="editor">
+            <div id="toolbar">
+                <label><b>Color</b></label>
+                <select id="colors" class="icon1"></select>
+
+                <button class="icon1" style="margin-right: 5px;" onclick="change('bold')"><b>F</b></button>
+                <button class="icon1" style="margin-right: 5px;" onclick="change('italic')"><i>K</i></button>
+                <button class="icon1" onclick="change('underline')"><u>U</u></button>
+
+                <button class="icon1" style="font-size:16px; margin-right: 5px;" onclick="change('undo')"><i class="fa fa-mail-reply"></i></button>
+                <button class="icon1" style="font-size:16px;" onclick="change('redo')"><i class="fa fa-mail-forward"></i></button>
+
+                <button class="icon1" style="font-size:16px; margin-right: 5px;" onclick="change('justifyLeft')"><i style="font-size:16px;" class="material-icons">format_align_left</i></button>
+                <button class="icon1" style="font-size:16px;" onclick="change('justifyCenter')"><i class="material-icons" style="font-size:16px;">format_align_center</i></button>
+            </div>
+            <div id="content-div" contentEditable="true">
+                <p id="content" contentEditable="true" ></p>
+            </div>
+        </div>
+
+        <script>
+            var p = document.getElementById("content");
+            //add colors
+            var colorsSelect= document.getElementById("colors");
+            var colors=["green","blue","yellow","black"];
+            colors.forEach(element => {
+                var o= document.createElement("option");
+                o.value=element;
+                o.style.backgroundColor=element;
+                colorsSelect.appendChild(o);
+            });
+
+            colorsSelect.addEventListener("change",function(){
+                change('foreColor',colorsSelect.value );
+                colorsSelect.style.backgroundColor=colorsSelect.value;
+            });
+
+            function change(command,value=null){
+                console.log(command +":"+value);
+                document.execCommand(command,false,value);
+            }
+        </script>
+    </body>
+</html>
