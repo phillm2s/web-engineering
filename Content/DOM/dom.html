@@ -196,6 +196,7 @@
 
 
 
+
     <h2>6. Einfaches Beispiel</h2>
     <p class="text-font">Im Folgenden ein interaktives Beispiel wie der HTML DOM mittels JavaScript verändert werden kann. 
     </p>
@@ -213,7 +214,38 @@
 
 
 
-    <h2>7. Komplexeres Beispiel</h2>
+
+    <h2>7. Einkaufsliste</h2>
+    <p class="text-font">Eine Einkaufsliste auf Basis der DOM API. Jeder Punkt auf der Einkaufsliste lässt sich individuell löschen.
+        Außerdem lässt sich die defaultmenge von 1 belibig ändern.
+    </p>
+    <htmlviewer-component src="Content\DOM\Beispiele\einkaufsliste.html" height-offset="100"></htmlviewer-component>
+    <codebox-component title="einkaufsliste.html" src="Content\DOM\Beispiele\einkaufsliste.html"></codebox-component>
+
+
+
+
+
+
+
+
+    <h2>8. Tabellenkalkulation</h2>
+    <p class="text-font">Das Folgende Beispiel ist das wohl komplexeste auf dieser Seite. Es zeigt ein Tabellenkalkulationsprogramm.<br>
+        Spalten und Zeilen können belibig erweitert werden.<br>
+        Klicken Sie in eine belibige Zelle um eine Zahl, oder eine Summenformel mit Zellenreferenz in der Form: <i>=SUM(C3,B1)</i> einzugeben.
+        Wenn Sie die Zelle verlassen wird die Formel ausgeführt und durch einen entspechenden Wert ersetzt.<br>
+        um bereits eingegebene Formeln zu sehen, klicken Sie einfach erneut in die entsprechende Zelle.
+    </p>
+
+    <htmlviewer-component src="Content\DOM\Beispiele\tabellencalculation.html" height-offset="100"></htmlviewer-component>
+    <codebox-component title="tableCalc.html" src="Content\DOM\Beispiele\tabellencalculation.html"></codebox-component>
+
+
+
+
+
+
+    <h2>9. Weiteres Beispiel</h2>
     <p class="text-font">Das nächste Beispiel zeigt eine Rednerliste, in welche neue Redner hinzugefügt werden können.
         Jedem redner ist ein individueller Timer ink. start/stop Button zugeordnet. Wird ein neuer Redner hinzugefügt, so begint dessen Timer automatisch.
         Es kann immer nur ein Timer gleichzeitig laufen. 
