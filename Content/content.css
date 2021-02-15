@@ -3,15 +3,19 @@
     margin: 8px;
     /* overflow-y: hidden; */
 }
+h1{
+    text-align: center;
+}
 
 h2{
     margin-top: 70px;
     margin-bottom: 10px;
 }
 
-h1{
-    text-align: center;
+h3{
+    margin-left: 2em;
 }
+
 
 
 .text-font {
