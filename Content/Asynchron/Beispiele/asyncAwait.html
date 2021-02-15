@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+    <body>  
+        <h1>This will work too but I don't Promise</h1>
+        <p>Lädt asynchron 2 Textfiles und Konkateniert diese Zeilenweise
+
+        </p>
+        <p>Beide Files haben 10 Zeilen.<br>
+            File 1 mit den Buchstaben A bis J, File 2 Zahlen von 1 bis 10.
+        </p>
+        <ul id="out">
+        </ul>
+
+        <button id="but" style="margin-top: 10px;">Concatinate</button>
+    </body>
+    <script>
+        document.getElementById("but").addEventListener("click", function(){
+            mergeFiles("text1.txt", "text2.txt");
+        });
+
+        function mergeFiles(path_a, path_b){
+            var text_a = undefined;
+            var text_b = undefined;
+
+            (async function(){
+                var res = await fetch(path_a);
+                this.text_a = await res.text();
+                mergeText();
+            })();
+            (async function(){
+                var res = await fetch(path_b);
+                this.text_b = await res.text();
+                mergeText();
+            })();
+
+            function mergeText(){
+                if(this.text_a===undefined || this.text_b===undefined){return;}
+                var text_a = this.text_a.split('\n');
+                var text_b = this.text_b.split('\n');
+
+                var list= document.getElementById("out");
+                for(let i=0;i<text_a.length;i++){
+                    console.log(text_a[i] + text_b[i]);
+                    var li= document.createElement("li");
+                    li.textContent= text_a[i] + text_b[i];
+                    list.appendChild(li);
+                }
+            }
+        }
+    </script>
+</html>
