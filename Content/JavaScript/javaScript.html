@@ -37,32 +37,124 @@
         Bei den Funktionen handelt es sich um die Übungsaufgaben des Kapitels <i>3. JavaScript</i> unter <i>https://kaul.inf.h-brs.de/wem/#app-content-4-2</i>.
     </p>
 
+
+
+
     <h2>1. Funktionen in JavaScript</h2>
-    <p class="text-font">Es folgen eine Reihe JavaScript Funktionen ink. Code sowie eine kurzen Erläuterungen.
+    <p class="text-font">Es folgen eine Reihe JavaScript Funktionen ink. Code.
     </p>
 
+    <p class="text-font">Schreiben Sie eine Funktion identity_function(), die ein Argument als Parameter
+        entgegen nimmt und eine Funktion zurück gibt, die dieses Argument zurück gibt.
+    </p>
     <codebox-component><!--
     function identity_function(arg) {   //call like identity_function("hallo")();
         return function(){return arg;}
     }
     --></codebox-component>
-    <p class="text-font">Funktion, die ein Argument als Parameter entgegen nimmt und eine Funktion zurück gibt,
-        die dieses Argument zurück gibt.
+
+
+
+    <p class="text-font">Schreiben Sie eine Addier-Funktion addf(), so dass addf(x)(y) genau x + y zurück gibt.
+        (Es haben also zwei Funktionsaufrufe zu erfolgen. addf(x) liefert eine Funktion, die auf y angewandt wird.)
     </p>
-
-
-
     <codebox-component><!--
     function addf(x){   //call like addf(3)(5);
         return function(y){return x+y;}
     }
     --></codebox-component>
-    <p class="text-font">Eine Addier-Funktion <i>addf()</i>, so dass <i>addf(x)(y)</i> genau x + y zurück gibt.
-        (Es erfolgen also zwei Funktionsaufrufe. <i>addf(x)</i> liefert eine Funktion, die auf y angewandt wird.)
+
+
+
+
+    <p class="text-font">Schreiben Sie eine Funktion applyf(), die aus einer binären Funktion wie add(x,y) eine Funktion addfberechnet,
+        die mit zwei Aufrufen das gleiche Ergebnis liefert, z.B. addf = applyf(add); addf(x)(y) soll add(x,y) liefern.
+        Entsprechend applyf(mul)(5)(6) soll 30 liefern, wenn mul die binäre Multiplikation ist.
     </p>
+    <codebox-component><!--
+    function addf(x){   //call like addf(3)(5);
+        return function(y){return x+y;}
+    }
+
+    function applyf(f) {    //call with applyf(add)(3)(5);
+        return f;
+    }
+    --></codebox-component>
 
 
 
+
+    <p class="text-font">Schreiben Sie eine Funktion curry() (von Currying), die eine binäre Funktion und ein Argument nimmt,
+        um daraus eine Funktion zu erzeugen, die ein zweites Argument entgegen nimmt, z.B. add3 = curry(add, 3);add3(4) ergibt 7. curry(mul, 5)(6) ergibt 30.
+    </p>
+    <codebox-component><!--
+    function addf(x){   //call like addf(3)(5);
+        return function(y){return x+y;}
+    }
+    
+    function curry(bin_fun, arg){
+        return function(arg2) {return bin_fun(arg)(arg2);}
+    }
+
+    //add3 = curry(addf, 3);
+    //value = add3(4);
+    --></codebox-component>
+
+
+
+
+    <p class="text-font">Erzeugen Sie die inc-Funktion mit Hilfe einer der Funktionen addf, applyf und curry aus den letzten Aufgaben, ohne die Funktion inc() selbst
+        zu implementieren. (inc(x) soll immer x + 1 ergeben und lässt sich natürlich auch direkt implementieren.
+        Das ist aber hier nicht die Aufgabe.) Vielleicht schaffen Sie es auch, drei Varianten der inc()-Implementierung zu schreiben?
+    </p>
+    <codebox-component><!--
+    function inc(x) {
+        return addf(x)(1);
+    }
+    --></codebox-component>
+
+
+
+
+    <p class="text-font">Schreiben Sie eine Funktion methodize(), die eine binäre Funktion (z.B. add, mul) in eine unäre Methode verwandelt.
+        Nach Number.prototype.add = methodize(add); soll (3).add(4) genau 7 ergeben.
+    </p>
+    <codebox-component><!--
+    function add(a,b) {
+        return a+b;
+    }
+
+    function methodize(f) {
+        return function(b) {return f(this.valueOf(),b);}
+    
+    }
+
+    Number.prototype.add = methodize(add);
+    //(5).add(3)
+    --></codebox-component>
+
+
+
+
+
+    <p class="text-font">Schreiben Sie eine Funktion demethodize(), die eine unäre Methode (z.B. add, mul) in eine binäre Funktion umwandelt.
+        demethodize(Number.prototype.add)(5, 6) soll 11 ergeben.
+    </p>
+    <codebox-component><!--
+    function demethodize(f,a,b) {
+        return function(a,b){return add(a,b)}; 
+    }
+    
+    //alert( demethodize(Number.prototype.add)(5, 6) );
+    --></codebox-component>
+
+
+
+
+
+    <p class="text-font">Schreiben Sie eine Funktion twice(), die eine binäre Funktion in eine unäre Funktion umwandelt, die den einen Parameter zweimal weiter reicht.
+        Z.B. var double = twice(add); double(11) soll 22 ergeben; var square = twice(mul); square(11) soll mul(11,11) === 121 ergeben.
+    </p>
     <codebox-component><!--
     function twiche(bin_fun){
         return function(a) { return bin_fun(a,a)};
@@ -70,12 +162,12 @@
     // double = twiche(add); 
     // alert( double(11) );
     --></codebox-component>
-    <p class="text-font">Eine Funktion <i>twice()</i>, die eine binäre Funktion in eine unäre Funktion umwandelt,
-        die den einen Parameter zweimal weiter reicht.
+
+
+
+    <p class="text-font">Schreiben Sie eine Funktion composeu(), die zwei unäre Funktionen in eine einzelne unäre Funktion transformiert,
+        die beide nacheinander aufruft, z.B. soll composeu(double, square)(3) genau 36 ergeben.
     </p>
-
-
-
     <codebox-component><!--
     function double(x){return x*2;}
     function square(x){return x*x;}
@@ -85,11 +177,25 @@
     }
     //alert( composeu(double,square)(3) );
     --></codebox-component>
-    <p class="text-font">Eine Funktion composeu(), die zwei unäre Funktionen in eine einzelne unäre Funktion transformiert,
-        die beide nacheinander aufruft. Also ergibt <i>composeu(double, square)(3)</i>  36.
+
+
+
+
+
+    <p class="text-font">Schreiben Sie eine Funktion composeb(), die zwei binäre Funktionen in eine einzelne Funktion transformiert,
+        die beide nacheinander aufruft, z.B. composeb(add, mul)(2, 3, 5) soll 25 ergeben.
     </p>
+    <codebox-component><!--
+    function composeb(b1, b2) {
+        return function (a,b,c) { return b2( b1(a,b), c); };
+    }
+    //alert( composeb(add,mul)(2,3,5) ); //(2+3)*5
+    --></codebox-component>
 
 
+    <p class="text-font">Schreiben Sie eine Funktion once(), die einer anderen Funktion nur einmal erlaubt, aufgerufen zu werden, z.B. add_once = once(add);
+        add_once(3, 4) soll beim ersten Mal 7 ergeben, beim zweiten Mal soll jedoch add_once(3, 4) einen Fehlerabbruch bewirken.
+    </p>
     <codebox-component><!--
     function once(f) {
         var executed = false;
@@ -107,19 +213,76 @@
     //add_once(5,6);
     ///alert(add_once(3,4));
     --></codebox-component>
-    <p class="text-font">Eine Funktion once(), die einer anderen Funktion nur einmal erlaubt,
-        aufgerufen zu werden. z.B. <i>add_once = once(add);</i> gefolgt von <i>add_once(3, 4)</i> ergibt beim ersten mal 7,
-        beim zweiten aufrufen von <i>add_once(3, 4)</i> wird jedoch eine Exception geworfen.
-    </p>
     <div class="info-box">
-    <p class="text-font">Hier fällt sofort ein Ungewöhnliches Verhalten ins Auge.
-        Die mit <i>var</i> instanziierte Variablen behält ihre Gültigkeit für die innere Methode, auch wenn diese bereits durchlaufen wurde.
-        Diese Technik nennt man in JavaScript <i>closure</i>. Eine Funktion kann neben seinem eigenen auch immer auf den darüberliegenden Scope
-        zugreifen, auch wenn dieser eine bereits durchlaufende Methode ist.
-    </p>
+        <p class="text-font">Hier fällt sofort ein Ungewöhnliches Verhalten ins Auge.
+            Die mit <i>var</i> instanziierte Variablen behält ihre Gültigkeit für die innere Methode, auch wenn diese bereits durchlaufen wurde.
+            Diese Technik nennt man in JavaScript <i>closure</i>. Eine Funktion kann neben seinem eigenen auch immer auf den darüberliegenden Scope
+            zugreifen, auch wenn dieser eine bereits durchlaufende Methode ist.
+        </p>
     </div>
 
 
+
+
+
+    <p class="text-font">Schreiben Sie eine Fabrik-Funktion counterf(), die zwei Funktionen inc() und dec() berechnet,
+        die einen Zähler hoch- und herunterzählen. Z.B. counter = counterf(10); Dann soll counter.inc() 11 und counter.dec() wieder 10 ergeben.
+    </p>
+    <codebox-component><!--
+    function counterf(x) {
+        return {    // return a new object with given methods
+            inc : function() {return ++x;},
+            dec : function() {return --x;}
+        };
+    }
+
+    // var counter = counterf(10);
+    // alert(counter.inc());
+    // alert(counter.inc());
+    // alert(counter.dec());
+    --></codebox-component>
+
+
+
+
+    <p class="text-font">Schreiben Sie eine rücknehmbare Funktion revocable(), die als Parameter eine Funktion nimmt und diese bei Aufruf ausführt.
+        Sobald die Funktion aber mit revoke() zurück genommen wurde, führt ein erneuter Aufruf zu einem Fehler. Z.B.<br>
+        temp = revocable(alert);<br>
+        temp.invoke(7); // führt zu alert(7);<br>
+        temp.revoke();<br>
+        temp.invoke(8); // Fehlerabbruch!
+    </p>
+    <codebox-component><!--
+    function revocable(f) {
+        var revoked = false;
+        return {
+            invoke : function(param){
+                if(revoked===false)
+                    f(param);
+                else
+                    throw "Fehlerabbruch!";
+            },
+            revoke : function(){
+                revoked = true;
+            },
+        };
+    }
+
+    // var temp = revocable(alert);
+    // temp.invoke("hello");
+    // temp.revoke();
+    // temp.invoke("hello agian");
+    --></codebox-component>
+
+
+    <p class="text-font">Implementieren Sie ein "Array Wrapper"-Objekt mit den Methoden get, store und append,
+        so dass ein Angreifer keinen Zugriff auf das innere, private Array hat.<br>
+        my_vector = vector();<br>
+        my_vector.append(7);<br>
+        my_vector.store(1, 8);<br>
+        my_vector.get(0) // 7<br>
+        my_vector.get(1) // 8
+    </p>
     <codebox-component><!--
     function ArrayWrapper(array) {
         this.array = array;
@@ -133,15 +296,17 @@
     // a.append([33,44]);
     // alert(a.get());
     --></codebox-component>
-    <p class="text-font">Da es in JavaScript nativ keine <i>private</i> Variablen gibt, müssen wir ein wenig triksen,
-        indem wir die zu schützende Variable in einen seperaten Scope auslagern.
-        Wir können einen neuen <i>Array Wrapper</i> mit einem belibigen Array instanziieren. Der zugriff auf dieses
-        Array geschieht dann ausschlißlich durch die obrig definierten Methoden. Auch hier kommt wieder <i>closure</i> zum Einsatz.
-    </p>
+
 
 
     <h2>2. Fortgeschrittenere Funktionen in JavaScript</h2>
 
+    <p class="text-font">Make a function that makes a publish/subscribe object. It will reliably deliver
+        all publications to all subscribers in the right order.<br>
+        my_pubsub = pubsub();<br>
+        my_pubsub.subscribe(alert);<br>
+        my_pubsub.publish("It works!"); // alert("It works!")
+    </p>
     <codebox-component><!--
     function pubsub() {
         return new function(){    //return new object
@@ -157,13 +322,44 @@
 
     // my_pubsub = pubsub();
     // my_pubsub.subscribe(alert);
-    // my_pubsub.publish("It works!"); //==> alert("It works!")
+    // my_pubsub.publish("It works!"); // alert("It works!")
     --></codebox-component>
-    <p class="text-font">Ein <i>Publish Subscribe Muster</i>. Subscriber können Methoden zum PublishSubscribe Objekt hinzufügen, z.B. (<i>alert</i>).
-        Wird im Anschluss die Methode <i>publish(param)</i> ausgeführt, so werden auch die zuvor übergebenen Methoden (<i>alert(param)</i>) ausgeführt.
+
+
+
+
+
+    <p class="text-font">Make a factory that makes functions that generate unique symbols.<br>
+        gensym = gensymf('G');<br>
+        gensym() // 'G0'<br>
+        gensym() // 'G1'<br>
+        gensym() // 'G2'<br>
+        gensym() // 'G3'
     </p>
+    <codebox-component><!--
+    function gensymf(char) {
+        var index=0;
+        return function(){return (char + ++index);};
+    }
+
+    var gensym = gensymf('G');
+    alert(gensym()) // 'G1'
+    alert(gensym()) // 'G2'
+    alert(gensym()) // 'G3'
+    --></codebox-component>
 
 
+
+
+    <p class="text-font">Make a function that returns a function that will return the next fibonacci number.<br>
+        var fib = fibonaccif(0, 1);<br>
+        fib() // 0<br>
+        fib() // 1<br>
+        fib() // 1<br>
+        fib() // 2<br>
+        fib() // 3<br>
+        fib() // 5
+    </p>
     <codebox-component><!--
     function fibonaccif(a,b) {
         return function(){
@@ -182,10 +378,13 @@
     // alert(fib()) // 3
     // alert(fib()) // 5
     --></codebox-component>
-    <p class="text-font">Die Funktion <i>fibonaccif(param1,param2)</i> gibt eine Funktion zurück, welche wiederum mit jedem Aufruf die nächste Fibonaccizahl zurück gibt.
+
+
+
+    <p class="text-font">Write a function that adds from many invocations, until it sees an empty invocation.<br>
+        addg(3)(4)(5)() // 12<br>
+        addg(1)(2)(4)(8)() // 15
     </p>
-
-
     <codebox-component><!--
     function addg(x) {
         var value=x;
@@ -200,15 +399,44 @@
             }
         }
     }
-    // alert( addg(3)(4)(5)() );    //returns 12
-    // alert( addg(1)(2)(4)(8)() ); //returns 15
+    // alert( addg(3)(4)(5)() );
+    // alert( addg(1)(2)(4)(8)() );
     --></codebox-component>
-    <p class="text-font">Eine Funktion die sich selbst zurück gibt und den übergebenen Wert zu ihrem speicher addiert, bis ein leerer Aufruf erfolgt.
+
+
+
+    <p class="text-font">Write a function that will take a binary function and apply it to many invocations.<br>
+        applyg(add)(3)(4)(5)() // 12<br>
+        applyg(add)(1)(2)(4)(8)() // 15
     </p>
+    <codebox-component><!--
+    function applyg(f){
+        f;
+        var values =[];
+
+        return function inner(x){
+            if(x!=undefined){
+                values.push(x);
+                return inner;
+            }else { //undefined
+                value=values[0];
+                for (i=0; i< values.length-1; i++)
+                    value = f(value, values[i+1]);
+                return value;
+            }
+        }
+    }
+
+    //alert( applyg(add)(2)(3)(4)());
+    --></codebox-component>
 
 
 
 
+    <p class="text-font">Write a function m that takes a value and an optional source string and returns them in an object.<br>
+        JSON.stringify(m(1)) // {"value": 1, "source": "1"}<br>
+        JSON.stringify(m(Math.PI, "pi")) // {"value": 3.14159..., "source": "pi"}
+    </p>
     <codebox-component><!--
     function m(value, source="source") {
         return new obj(value,source);
@@ -219,12 +447,138 @@
         };
     }
 
-    //alert( JSON.stringify(m(1)) );    // {"value": 1, "source": "1"}
-    //alert( JSON.stringify(m(23, "age")) ); // {"value": 26, "source": "age"}
+    //alert( JSON.stringify(m(1)) );
+    //alert( JSON.stringify(m(Math.PI, "pi")) );
     --></codebox-component>
-    <p class="text-font">Eine Funktion <i>m</i>, welche ein Objekt aus einem value und einem source String erzeugt.
+
+
+
+
+    <p class="text-font">Write a function addm that takes two m objects and returns an m object.
+        JSON.stringify(addm(m(3), m(4))) // {"value": 7, "source": "(3+4)"}
     </p>
+    <codebox-component><!--
+    function addm(m1, m2) {
+        return new m(m1.value+m2.value , "("+m1.value+"+"+m2.value+")");
+    }
+    
+    //alert( JSON.stringify(addm(m(3), m(4))) );
+    --></codebox-component>
 
 
 
+    <p class="text-font">Write a function binarymf that takes a binary function and a string and returns a function that acts on m objects.<br>
+        addm = binarymf(add, "+");<br>
+        JSON.stringify(addm(m(3), m(4))) // {"value": 7, "source": "(3+4)"}
+    </p>
+    <codebox-component><!--
+    function binarymf(f,s) {
+        return function addm(m1,m2){
+            return new m(f(m1.value,m2.value) , "("+m1.value+s+m2.value+")");
+        };
+    }
+
+    //addm = binarymf(add, "+");
+    //alert( JSON.stringify(addm(m(3), m(4))) );
+    --></codebox-component>
+
+
+
+
+
+    <p class="text-font">Modify function binarymf so that the functions it produces can accept arguments that are either numbers or m objects.<br>
+        addm = binarymf(add, "+");<br>
+        JSON.stringify(addm(3, 4)) // {"value": 7, "source": "(3+4)"}
+    </p>
+    <codebox-component><!--
+    function binarymf(f,s) {
+        return function (mo1,mo2){
+            if(typeof mo1 == "number")
+                mo1=m(mo1);
+            if(typeof mo2 == "number")
+                mo2=m(mo2);
+            return new m(f(mo1.value,mo2.value) , "("+mo1.value+s+mo2.value+")");
+        };
+    }
+
+    //addm = binarymf(add, "+");
+    //alert( JSON.stringify(addm(3, 4)) );
+    --></codebox-component>
+
+
+
+    <p class="text-font">Write function unarymf, which is like binarymf except that it acts on unary functions.<br>
+        squarem = unarymf(square, "square");<br>
+        JSON.stringify(squarem(4)) // {"value": 16, "source": "(square 4)"}
+    </p>
+    <codebox-component><!--
+    function unarymf(f,s) {
+        return function(x){
+            return m(f(x),"("+s+" "+x+")");
+        }
+    }
+
+    squarem = unarymf(square, "square");
+    alert( JSON.stringify(squarem(4)) );
+    --></codebox-component>
+
+
+
+    <p class="text-font">Write a function that takes the lengths of two sides of a triangle
+        and computes the length of the hypotenuse. (Hint: c2 = a2 + b2)<br>
+        hyp(3, 4) // 5
+    </p>
+    <codebox-component><!--
+    function hyp(a,b){
+        return Math.sqrt((a*a)+(b*b));
+    }
+
+    //alert( hyp(3,4) );
+    --></codebox-component>
+
+
+
+
+
+
+    <p class="text-font">Write a function that evaluates array expressions.<br>
+        hypa = [ Math.sqrt, [ add, [mul, 3, 3], [mul, 4, 4] ] ];<br>
+        exp(hypa) // 5
+    </p>
+    <codebox-component><!--
+    function exp(array) {
+        //this "let" is super importaint!
+        //because of this strange closure behaviour, the inner calls
+        //and changes on i will also change the outer i values(like 1 static variable)
+        for (let i=1;i< array.length;i++){  
+            if(Array.isArray(array[i])===true){
+                array[i]= exp(array[i]);
+            }
+        }
+        if(array.length===2)
+            return array[0](array[1]);  //un method
+        return array[0](array[1],array[2]); //bin method
+    };
+
+
+    //hypa = [ Math.sqrt, [ add, [mul, 3, 3], [mul, 4, 4] ] ];
+    //alert( exp(hypa) );
+    --></codebox-component>
+
+
+
+
+
+    <p class="text-font">Make a function that stores a value in a variable.<br>
+        var variable; store(5); // variable === 5
+    </p>
+    <codebox-component><!--
+    function store(value){
+        variable=value;
+    }
+
+    //var variable;
+    //store(5);
+    //alert(variable);
+    --></codebox-component>
 </div>
