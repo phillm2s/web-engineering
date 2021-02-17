@@ -1,0 +1,61 @@
+<!-- MY TUTORIAL:    https://www.youtube.com/watch?v=WbbAPfDVqfY&ab_channel=dcode -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WWW-Navigator</title>
+        <link rel="shortcut icon" href="#"> <!--https://stackoverflow.com/questions/31075893/im-getting-favicon-ico-error -->
+        <link rel="stylesheet" href="wwwnavigator.css">
+        <link rel="manifest" href="manifest.json">
+        <meta name="theme-color" content="#c28281">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="apple-touch-icon" href="image/logo192.png">
+
+        <script type="module" src="Components/navigationbars.js"></script>
+        <script type="module" src="Components/litMenue.js"></script>
+        <script type="module" src="Components/contentContainer.js"></script>
+
+    </head>
+    <body>
+        <nav class="header">
+            <h1 style="color: white; text-align: center; margin-top: 5px; margin-bottom: 5px; font-size: 2em;">WWW - Navigator</h1>
+            <!-- display only one of the following components depending on css rule-->
+            <!-- https://stackoverflow.com/questions/28334845/changing-html-from-css-media-query -->
+            <litmenue-component class="horizontal" position="horizontal">
+                <a href='#'>HTML</a>
+                <a href='#'>CSS</a>
+                <a href='#'>JavaScript</a>
+                <a href='#'>Other</a>
+            </litmenue-component>
+            <litmenue-component class="vertical" position="vertical">
+                <a href='#'>HTML</a>
+                <a href='#'>CSS</a>
+                <a href='#'>JavaScript</a>
+                <a href='#'>Other</a>
+            </litmenue-component>
+        </nav>
+
+        <aside class="left">
+            <litmenue-component position="vertical">
+                <a href='#'>Promise</a>
+                <a href='#'>async</a>
+                <a href='#'>fetch</a>
+                <a href='#'>callback</a>
+                <a href='#'>class</a>
+            </litmenue-component>
+        </aside>
+
+        <article>
+            <content-component src="loremIpsum.json"></content-component>
+        </article>
+
+        <aside class="right">
+            <p style="color: white; margin: 8px; font-size: large;">Additional Information: Links to external ressources</p>
+        </aside>
+
+        <nav class="footer">
+            <nav-footer/>
+        </nav>
+    </body>
+    <script src = "./index.js"></script>
+</html>

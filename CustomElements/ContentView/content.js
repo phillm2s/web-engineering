@@ -17,7 +17,8 @@ customElements.define('content-component',
                 "Content/DOM/dom.js",
                 "Content/Asynchron/asynchron.js",
                 "Content/NodeNpmDeno/nodeNpmDeno.js",
-                "Content/ModularWeb/modularWeb.js"
+                "Content/ModularWeb/modularWeb.js",
+                "Content/PWA/pwa.js"
             ];
 
             //add script tag for each path
@@ -48,6 +49,8 @@ customElements.define('content-component',
                 componentTag = "nodenpmdeno-component"
             else if(navigationContentID==="7")
                 componentTag = "modularweb-component"
+            else if(navigationContentID==="8")
+                componentTag = "pwa-component"
             else {
                 console.log("Warning: No matching component for NavigationContentID: "+navigationContentID)
                 return;

@@ -1,0 +1,62 @@
+
+<head>
+    <link rel="stylesheet" href="Content/content.css">
+
+</head>
+<div class="container">
+    <h1>PWA</h1>
+
+
+    <div class="info-box">
+        <p class="text-font">Diese Web-App ist übrigens auch eine PWA!
+        </p>
+    </div>
+
+    <h2>Wandeln Sie Ihren LitElement WWW-Navigator aus Aufgabe 7.3 in eine Progressive Web App um.</h2>
+    <p  class="text-font">
+       Im folgenden ein <i>Mockup</i> des WWW - Navigators aus Übung 5.4.<br>
+       Dabei wurde die "Lit-Element-Menü-Navigator" Komponente aus Übung 7 Wiederverwendet, sowie eine
+       Komponente zum laden und darstellen von Textinhalten aus Json Dateine erstellt.
+       Die PWA kann <a href="Content\PWA\WWW-Navigator.zip" target="_blank" rel="noopener noreferrer">
+        <button class="in-text-button">HIER</button></a> heruntergeladen werden.
+    </p>
+
+    <div style="width: fit-content; margin: auto;">
+        <img class="illustration" style="border: 2px solid; border-radius: 3px;" src="Content\PWA\screenshotWwwNavigator.png" alt="www-navigator">
+        <p class="reference">Screenshot, WWW-Navigator als PWA</p>
+    </div>
+
+    <h3>Beschreiben Sie hier Ihr Vorgehen, Ihre Libraries und Tools, die Sie einsetzen:</h3>
+    <p class="text-font">
+        Zur Erstellung meiner ersten PWA habe ich als Grundlage die VL Folien verwendet, sowie
+        dieses <a href="https://www.youtube.com/watch?v=WbbAPfDVqfY&ab_channel=dcode" target="_blank" rel="noopener noreferrer">
+        <button class="in-text-button">Video</button></a>.</p>
+    <p class="text-font">
+        Als IDE habe ich wie immer VS code verwendet und zum Testen den Google Chrome Browser.<br>
+        Außerdem die VS Code extension "Live Server" zum einfachen hosten eines lokalen Webservers.
+        Extra Frameworks habe ich nicht verwendet (lediglich die lit library).
+        Das erstellen aller minimal benötigten Elemente für die PWA war rellativ einfach,
+        wobei der Inhalt (WWW-Navigator) sehr minimal gehalten wurde.
+     </p>
+
+
+     <h3>Beschreiben Sie hier Ihre Probleme und Lösungskonzepte:</h3>
+     <p class="text-font">
+        Das mit abstand größte Problem war die erstellung eines gültigen HTTPS Zertifikat,
+        da sonst der Webworker nicht funktioniert.
+        Die von mir verwendete Webserver extention verlangte dabei nicht nur nach einem Zertifikat,
+        sondern auch nach dem in einer separaten Datei gespeicherten Private key.
+        Mit openssl hat das ganze leider nicht funktioniert.
+        Aufgrund dessen habe ich dann mittels Powershell ein Zertifikat generieren lassen und durch einen Webservice den Private key aus diesem Zertifikat extrahiert. 
+     </p>
+
+
+     <h3>Geben Sie hier Ihre Lighthouse-Messergebnisse für Ihre PWA ein:</h3>
+
+     <div style="width: fit-content; margin: auto;">
+        <img class="illustration" style="border: 1px solid; border-radius: 3px;" src="Content\PWA\lighthouse.png" alt="lighthouse">
+        <p class="reference">Screenshot, Lighthouse Messergebnisse</p>
+    </div>
+
+
+</div>
