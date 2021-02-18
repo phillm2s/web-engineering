@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            menu-component .vertical button{
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <script src="https://unpkg.com/vue"></script>
+        <script type="module" src="./menuComponent.mjs"></script>
+        <div id="app"> 
+            <h1>Horizontales Menü</h1>
+            <div style="border: 1px solid; width: fit-content; height: 50px;">     
+                <menu-component class="horizontal">
+                </menu-component>   
+            </div>
+            <h1>Vertikales Menü</h1>
+            <div style="border: 1px solid; width: 100px; height: fit-content">     
+                <menu-component class="vertical">
+                </menu-component>
+            </div>   
+        </div>
+    </body>
+</html>
