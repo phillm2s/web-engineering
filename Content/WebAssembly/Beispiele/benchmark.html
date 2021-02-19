@@ -1,0 +1,124 @@
+<html>
+    <head>
+        <style>
+            .background{
+                background-color: gray;
+                border: 2px solid;
+                border-radius: 5px;
+                width: 300px;
+                height: 20px;
+            }
+            .green {
+                background-color: green;
+                height: 100%;
+                width: 0%;
+            }
+            .results p {
+                margin: 4px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Vergleich JS und Web-Assembly Performance</h1>
+        <button onclick="this.disabled=true;this.textContent='wait...'; performBenchmark()">Start Benchmark</button>
+
+        <div style="width: fit-content; margin-top: 30px;">
+            <h2>Web-Assembly:</h2>
+            <div class="background">
+                <div id="wa" class="green"></div>
+            </div>
+            <div class="results">
+                <p id="wamin">Min: </p>
+                <p id="wamax">Max: </p>
+                <p id="waavg">Avg: </p>
+            </div>
+
+            <h2>JavaScript:</h2>
+            <div class="background">
+                <div id="js" class="green"></div>
+            </div>
+            <div class="results">
+                <p id="jsmin">Min: </p>
+                <p id="jsmax">Max: </p>
+                <p id="jsavg">Avg: </p>
+            </div>
+        </div>
+        <div id="js"></div>
+    </body>
+    <script>         
+        async function loadAssembly(path) {
+            const response = await fetch(path); //load wasm file
+            const buffer = await response.arrayBuffer(); //binary
+            const wasm = await WebAssembly.instantiate(buffer);
+            var exp = wasm.instance.exports;
+            return exp; // return promise
+        }
+
+        async function performBenchmark(){
+            console.log("========================================");
+            console.log("10 Calculations for each implementation.");
+            console.log("========================================");
+            loadAssembly("./math.wasm").then(async function(webAssMath){
+                console.log("========= WebAssembly =======");
+                var result = await testMethod("wa",webAssMath.isPrim);
+                document.getElementById("waavg").innerHTML+= " <i>"+result[2] +" millis</i>";
+                document.getElementById("wamax").innerHTML+= " <i>"+result[1] +" millis</i>";
+                document.getElementById("wamin").innerHTML+= " <i>"+result[0] +" millis</i>";
+
+                console.log("========= JavaScript =======");
+                var result = await testMethod("js",jsIsPrim);
+                document.getElementById("jsavg").innerHTML+= " <i>"+result[2] +" millis</i>";
+                document.getElementById("jsmax").innerHTML+= " <i>"+result[1] +" millis</i>";
+                document.getElementById("jsmin").innerHTML+= " <i>"+result[0] +" millis</i>";
+                
+
+            });
+        }
+
+        async function testMethod(barId,method){
+            var min= Infinity;
+            var max = 0;
+            var avg = 0;
+            for (let x=0 ;x<10 ;x++){
+                var start =  performance.now();
+                var counter =0;
+                for(let i=1;i<=100000;i++){
+                    if(method(i)===1){ //1 means true
+                        counter +=1;
+                    }
+                }
+                var time = performance.now() -start;
+                avg += time;
+                if (time <min){
+                    min =time;
+                }if(time>max){
+                    max = time;
+                }
+                document.getElementById(barId).style.width= ((x+1)*10)+"%";
+                await new Promise(r => setTimeout(r, 0)); 
+                console.log((x+1)+") requiered time: " + time +" millis" );
+            }
+            avg=(avg/10);
+            console.log("avg requiered time: " + avg +" millis" );
+            console.log("max requiered time: " + max +" millis" );
+            console.log("min requiered time: " + min +" millis" );
+            return [min,max,avg];
+
+        
+            //await new Promise(r => setTimeout(r, 0));
+        }
+        
+        function jsIsPrim(number){
+            if(number <=1){
+            return 0;
+            }
+        
+            for(let i=2 ; i<= (number/2)+1 ; i++){
+                if(number%i===0){
+                    return 0;
+                }
+            }
+            return 1;
+        }
+    </script>
+</html>

@@ -19,7 +19,8 @@ customElements.define('content-component',
                 "Content/NodeNpmDeno/nodeNpmDeno.js",
                 "Content/ModularWeb/modularWeb.js",
                 "Content/PWA/pwa.js",
-                "Content/Vue/vue.js"
+                "Content/Vue/vue.js",
+                "Content/WebAssembly/webAssembly.js"
             ];
 
             //add script tag for each path
@@ -54,6 +55,8 @@ customElements.define('content-component',
                 componentTag = "pwa-component"
             else if(navigationContentID==="9")
                 componentTag = "vue-component"
+            else if(navigationContentID==="10")
+                componentTag = "webassembly-component"
             else {
                 console.log("Warning: No matching component for NavigationContentID: "+navigationContentID)
                 return;

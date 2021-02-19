@@ -1,0 +1,68 @@
+
+<head>
+    <link rel="stylesheet" href="Content/content.css">
+
+</head>
+<div class="container">
+    <h1>Web-Assembly</h1>
+
+
+    <h2>WebAssembly-Modul von Hand erstellen</h2>
+
+    <p class="text-font">Erstellen Sie ein WebAssembly-Modul für den größten gemeinsamen Teiler von Hand in WAT,
+        kompilieren Sie diesen mit wat2wasm nach WASM und testen Sie Ihr Modul durch Aufruf mit Parametern aus dem Bereich von 1 bis 100.
+    </p>
+
+    <htmlviewer-component src="Content\WebAssembly\Beispiele\ggtTest.html"></htmlviewer-component>
+    <codebox-component title="ggtTest.html" src="Content\WebAssembly\Beispiele\ggtTest.html"></codebox-component>
+    <codebox-component title="ggt.wat" src="Content\WebAssembly\Beispiele\ggt.wat"></codebox-component>
+
+
+
+
+    <h2>Performanz-Messungen und -Vergleich</h2>
+
+    <p class="text-font">Berechnen Sie, wie viele Primzahlen es bis 100.000 gibt.
+        Implementieren Sie Ihren Algorithmus sowohl in JavaScript als auch in WebAssembly.
+        Vergleichen Sie die Performanz beider Implementierungen.
+    </p>
+
+    <h3>Wie viele Primzahlen gibt es bis 100.000? Geben Sie hier nur die Anzahl ein:</h3>
+    <p class="text-font">Es gibt <b>9591</b> Primzahlen bis 100.000
+    </p>
+
+    <h3>JS Primzahl Algorithmus</h3>
+    <codebox-component title="jsPrim.mjs" src="Content\WebAssembly\Beispiele\jsPrim.mjs"></codebox-component>
+
+
+    <h3>WAT Primzahl Algorithmus</h3>
+    <codebox-component title="watPrim.wat" src="Content\WebAssembly\Beispiele\watPrim.wat"></codebox-component>
+
+
+    <h3>C Primzahl Algorithmus aus welchem der Wat Code generiert wurde</h3>
+    <codebox-component title="cPrim.c" src="Content\WebAssembly\Beispiele\cPrim.c"></codebox-component>
+
+    <div class="info-box">
+        <p  class="text-font">Für eine optimale Vergleichbarkeit wurde auf die gleichheit des Algorithmus des JavaScript und WebAssemy Codes geachtet.
+        </p>
+    </div>
+
+
+    <h3>Benachmark Code (HTML und JS zusammen)</h3>
+    <htmlviewer-component src="Content\WebAssembly\Beispiele\benchmark.html"></htmlviewer-component>
+    <codebox-component title="benchmark.html" src="Content\WebAssembly\Beispiele\benchmark.html"></codebox-component>
+
+
+    <h3>Geben Sie hier Ihre statistische Analyse ein. Wie viel Prozent schneller ist WebAssembly?</h3>
+    <p class="text-font">Es ist sehr überraschend aber die beiden Methoden sind ziemlich genau gleich schnell.
+        Etwa 800ms für alle Primzahlen bis 100.000.<br>
+        Auch für Primzahlen bis 1.000.000. konnte kein Nennenswerter Performance Unterschied festgestellt werden.
+    </p>
+
+    <h3>Wie erklären Sie sich die Performanz-Unterschiede?</h3>
+    <p class="text-font">Entgegen meiner Annahme gibt es nahezu keinen Performance Unterschied für dieses Beispiele.<br>
+        Ich denke das Ergebnis hängt damit zusammen, das die JavaScript Engine (vor allem V8) extrem optimiert ist und damit zumindest
+        für diesen Fall genauso schnell wie WebAssembler.
+    </p>
+
+</div>

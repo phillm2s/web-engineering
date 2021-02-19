@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <style>
+            input {
+                width: 6em;
+            }
+            .output{
+                margin: 1px;
+                font-size: smaller;
+            }
+        </style>
+        <script>
+            async function loadAssembly(path) {
+                const response = await fetch(path); //load wasm file
+                const buffer = await response.arrayBuffer(); //binary
+                const wasm = await WebAssembly.instantiate(buffer);
+                var exp = wasm.instance.exports;
+                return exp; // return promise
+            }
+    
+            //load Webassambly module
+            function ggtSpan(){
+                //math.wasm contains ggt method
+                loadAssembly("./math.wasm").then(function(webAssMath){
+                    var out= document.getElementById("out");
+                    var maxout= 150;
+                    for (let i=1 ; i<=100;i++) {
+                        for (let j=0; j<=100; j++) {
+                            var msg = "ggt("+i+","+j+")=" +webAssMath.ggt(i,j);
+                            console.log(msg);
+                            if(maxout>0){
+                                var p= document.createElement("P");
+                                p.className="output";
+                                p.textContent= msg;
+                                out.appendChild(p);
+                                maxout--;
+                            }
+                        }
+                    }
+                    //console.log(webAssMath.ggt(16,40));
+                });
+                console.log("wait..")
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Calculate the GGT's for all numbers</h1>
+        <p>Between 1 and 100</p>
+        <button onclick="this.disabled=true;this.textContent='wait...'; ggtSpan()" style="font-size: larger;" id="calc">Calculate</button>
+        <div id="out" style="border: 1px solid; margin-top: 10px; width: fit-content; min-width: 200px; height: 400px; overflow-y: scroll;">
+            <h2 style="margin-bottom: 1px;">Output:</h2>
+            <p style="margin-top: 1px;">(see the console for more then 150 results)</p>
+        </div>
+    </body>
+</html>
