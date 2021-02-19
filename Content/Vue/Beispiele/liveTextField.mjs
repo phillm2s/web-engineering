@@ -1,4 +1,4 @@
-import LiveTextfield from './liveTextfield.mjs';
+import LiveTextfield from './liveTextField.mjs';
 
 //singelFile Component
 export default {
