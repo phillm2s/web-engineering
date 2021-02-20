@@ -54,10 +54,20 @@ customElements.define('menueaside-component',
             this.shadow.append(styles);
             this._isInititalized = true;
         }
-
+        
         addOnClickObserver(func){ //parameter= function(triggered HTMLElement)
+            var selected= null;
             this.as.forEach(element => {
-                element.addEventListener("click",function(){func(element);});
+                element.addEventListener("click",function(){
+                    if(selected!==null){
+                        selected.style.backgroundColor="unset";
+                        selected.style.opacity="unset";
+                    }
+                    element.style.backgroundColor="#5f5f5f";
+                    element.style.opacity="0.8";
+                    selected=element;
+                    func(element);
+                });
             });
         }
 
