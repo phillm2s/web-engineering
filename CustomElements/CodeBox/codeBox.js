@@ -48,12 +48,13 @@ customElements.define('codebox-component',
                 }
             })
 
-            var code = document.createElement("p");
+            var code = document.createElement("div");
+            code.className="code-div";
             if(src===null){
                 var lines = this.innerHTML.split("\n");
                 //first and last line are always emty ->skip
                 for(let i=1; i< lines.length-1; i++){
-                    code.innerHTML += "<xmp>"+(i)+". "+lines[i]+"</xmp>";
+                    code.innerHTML += "<div><span data-unselectable='"+(i)+". '></span> <xmp>"+lines[i]+"</xmp></div>";
                 }
             }else{
                 fetch(src)
@@ -66,7 +67,7 @@ customElements.define('codebox-component',
                 .then(response =>{
                     var lines = response.split("\n");
                     for(let i=0; i< lines.length; i++){
-                        code.innerHTML += "<xmp>"+(i+1)+". "+lines[i]+"</xmp>";
+                        code.innerHTML += "<div><span data-unselectable='"+(i+1)+". '></span> <xmp>"+lines[i]+"</xmp></div>";
                     }
                     if(fold!=null)
                         foldDiv(); //default folded

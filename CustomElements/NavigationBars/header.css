@@ -2,7 +2,7 @@
   text-align: center;
   font-family: Stencil Std, fantasy;
   /* https://stackoverflow.com/questions/2570972/css-font-border */
-  -webkit-text-stroke: 2px black; /* width and color */
+  -webkit-text-stroke: 2px var(--dark-gray); /* width and color */
   color:white;
 }
 

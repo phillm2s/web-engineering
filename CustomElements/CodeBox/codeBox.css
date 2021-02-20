@@ -10,19 +10,37 @@
     margin: auto;
     overflow-y: hidden;
     overflow-x: auto;
-    /* margin-top: 35px; */
+    margin-top: 10px;
 }
 
-.main-div p{
-    color: black;
-    margin: 0;
-    padding: 8px;
-    width: fit-content;
-}
-.main-div xmp{
-    font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+
+xmp{
+    /* w3school code font, https://www.w3schools.com/ */
+    font-family: Consolas,"courier new";
     font-size: small;
-    margin: 5px;
+    margin: 0;
+    display: inline;
+}
+
+.code-div div{
+    /* https://stackoverflow.com/questions/718891/how-to-make-a-div-not-wrap */
+    /* prevent from wrapping child elements */
+    white-space: nowrap;
+
+    border-bottom: 1px solid;
+    border-color: #c9c2c2;
+
+    margin: 1px;
+    margin-right: 8px;
+}
+
+.code-div span::before {
+    /* https://stackoverflow.com/questions/43203673/make-text-not-copyable-html */
+    content: attr(data-unselectable);
+}
+
+.code-div span{
+    color: #9e9a9a;
 }
 
 .title{
@@ -40,13 +58,13 @@
 }
 
 .main-div::-webkit-scrollbar-track{
-    -webkit-box-shadow: inset 0 0 3px #ff6501;
-    background-color: #ff6501;
+    -webkit-box-shadow: inset 0 0 3px var(--orange);
+    background-color: var(--orange);
 }
 
 .main-div::-webkit-scrollbar{
     height: 12px;
-    background-color: #ff6501;
+    background-color: var(--orange);
 }
 
 .main-div::-webkit-scrollbar-thumb{
@@ -55,9 +73,3 @@
     border-radius: 20px;
 }
 
-xmp{
-    border-style: solid;
-    border-width: 0;
-    border-bottom-width: 1px;
-    border-color: gray;
-}
