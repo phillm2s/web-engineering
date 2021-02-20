@@ -14,15 +14,15 @@
 
     <ul class="text-font">
         <li>Userinterface: URL Leiste, Lesezeichen, Homebutton, Letzte Seite Button, ...</li>
-        <li>Browser engine: Handelt Benutzereingaben (Maus, Tastatur)...</li>
-        <li>Rendering engine: Zuständig für die Darstellung(Rendering) des grafischen Inhalts  (Css & HTML parsing)</li>
-        <li>Netzwerk Modul: Steuert Netzwerkaufrufe (HTTP)</li>
-        <li>Userinterface Backend: Greift auf UI Betriebssytemmethoden zu</li>
-        <li>JavaScript Interpreter: Parst JavaScript Code und führt diesen aus</li>
-        <li>Data Persistance: In Browser integrierter, persistenter Speicher(Cookies, Caches, Datenbanken)</li>
+        <li>Browser-Engine: Handelt Benutzereingaben (Maus, Tastatur)...</li>
+        <li>Rendering-Engine: Zuständig für die Darstellung(Rendering) des grafischen Inhalts  (Css & HTML parsing)</li>
+        <li>Netzwerk-Modul: Steuert Netzwerkaufrufe (HTTP)</li>
+        <li>Userinterface-Backend: Greift auf UI Betriebssytemmethoden zu</li>
+        <li>JavaScript-Interpreter: Parst JavaScript Code und führt diesen aus</li>
+        <li>Data-Persistance: In Browser integrierter, persistenter Speicher(Cookies, Caches, Datenbanken)</li>
     </ul>
 
-    <p class="text-font">Für eine optimale performance werden dabei möglichst viele Abläufe paralelisiert.
+    <p class="text-font">Für eine optimale Performance werden dabei möglichst viele Abläufe paralelisiert.
         Z.B. das Parsing von JavaScript, HTML und CSS zu einem DOM Tree.
     </p>
 
@@ -35,13 +35,13 @@
 
     <h2>2. Rendering</h2>
 
-    <p class="text-font">Die Folgende Grafik beschreibt das Rendering des Browsers sehr anschaulich.
+    <p class="text-font">Die folgende Grafik beschreibt das Rendering des Browsers sehr anschaulich.
     </p>
 
     <div style="width: fit-content; margin: auto;">
         <img class="illustration"  style="width: 900px;" src="Content\DOM\Beispiele\RenderingAblauf.png" alt="Rendering">
         <p class="reference" style="border-bottom: 0;">Quelle: [10-02-2021] Screenshot VL, https://kaul.inf.h-brs.de/wem/#app-content-5-0&04_dom=page-5</p>
-        <p class="reference">original Quuelle: https://www.html5rocks.com/de/tutorials/internals/howbrowserswork/</p>
+        <p class="reference">Original Quelle: https://www.html5rocks.com/de/tutorials/internals/howbrowserswork/</p>
     </div>
 
     <p class="text-font">Das DOM wird zu einem Rendertree geparsed und die entsprechenden Stylesheets werden eingebunden.
@@ -58,12 +58,13 @@
         <p class="reference">Quelle: [05.02.2021] https://developer.mozilla.org/de/docs/Gecko-DOM-Referenz/Einf%C3%BChrung</p>
     </div>
 
-    <p class="text-font">Es bietet die Möglichkeit auf die verschachtelte Struktur des Elements zuzugreifen und so gezielt belibige
-        teile zu verändern oder zu lesen. Dadurch ist es Scriptsprachen wie JavaScript möglich, mit dem durch HTML vom Webbrowser gerenderten
-        inhalt zu Interagierren. Das bedeutet das gezielt auf der Webseite angezeigte Inhalte verändert werden können, ohne
+    <p class="text-font">Es bietet die Möglichkeit auf die verschachtelte Struktur eines Elements zuzugreifen und so gezielt belibige
+        Teile zu lesen, verändern, löschen und hinzufügen. Dadurch ist es Scriptsprachen wie JavaScript möglich, mit dem durch
+        HTML vom Webbrowser gerenderten Inhalt zu Interagieren.
+        Daraus folgt, dass gezielt auf der Webseite angezeigte Inhalte verändert werden können, ohne
         das eine <b>ganze</b> Seite neu gerendert werden muss.
     </p>
-    <p class="text-font">Die einzelnen DOM elemente sind in einer Baumstruktur angeordnet.
+    <p class="text-font">Die einzelnen DOM Elemente sind in einer Baumstruktur angeordnet.
         Ein wichtiger Unterschied besteht dabei in der unterscheidung der Typen.
         Ein HTML <i>Node</i> kann beispielsweise auch ein <i>Text</i> oder ein <i>Element</i> sein.
         Oder aber auch einfach nur ein <i>Node</i>. Stichwort: Vererbung 
@@ -75,8 +76,8 @@
 
 
     <div class="info-box">
-        <p class="text-font">Mittels DOM kann auch auf die CSS stylesheets eines HTML Dokuments zugegriffen werden, auch wenn dieses in einer
-            externen css Datei ausgelagert sind.
+        <p class="text-font">Mittels DOM kann auch auf die CSS Stylesheets eines HTML Dokuments zugegriffen werden, auch wenn diese in
+            externen css Dateien ausgelagert sind.
         </p>
     </div>
 
@@ -108,8 +109,7 @@
         </tr>
         <tr>
             <td>getElementsByTagName(tag)</td>
-            <td>Gibt eine <i>HTMLCollection</i> mit allen <i>Elements</i> mit dem übergebenen <i>tag</i> zurück. Wird tag="*" übergeben,
-                werden alle <i>Element</i> Objekte des Dokuments zurückgegeben.</td>
+            <td>Gibt eine <i>HTMLCollection</i> mit allen <i>Elements</i> mit dem übergebenen <i>tag</i> zurück.</td>
         </tr>
     </table>
 
@@ -117,7 +117,7 @@
         Die Methode <i>document.createElement("tag")</i> erstellt ein entsprechendes Element.
         Dessen Attribute können im Anschluss einfach über element.setAttribute("name",value) angepasst werden.
         Außerdem können auch diesem Element wieder belibig viele Elemente hinzugefügt werden <i>appendChild(newElement)</i>.
-        Dazu kommt noch eine Vielzahl an Methoden um sich in der Verschachtelten Struktur des DOMs zu bewegen. Durch kind Elemente
+        Dazu kommt noch eine Vielzahl an Methoden um in der Verschachtelten Struktur des DOMs zu Interagieren, durch Kind Elemente
         zu iterieren, Events zuzuweisen und vieles mehr. Dies ist also nur die Spitze des DOM Eisbergs.
     </p>
 
@@ -131,7 +131,7 @@
     <p class="text-font">Besonders häufig verwendete und leicht zu verwechslende Eigenschaften von <i>Nodes</i> werden im Folgenden erklärt.
     </p>
 
-    <p class="text-font">Die Beispiele beziehen sich dabei auf den Folgenden HTML und JavaScript code.
+    <p class="text-font">Die Beispiele beziehen sich dabei auf den Folgenden HTML und JavaScript Code.
     </p>
     <codebox-component><!--
     <p id="a" style="color: red;">Hello <b>World</b></p>
@@ -201,10 +201,10 @@
     <htmlviewer-component src="Content/DOM/Beispiele/jsDomManipulation.html"></htmlviewer-component>
     
     <codebox-component title="domExample.html" src="Content/DOM/Beispiele/jsDomManipulation.html"></codebox-component>
-    <p class="text-font">Durch den im <i>script</i> tag defineirten JavaScript code haben wir jedem <i>button</i> einen <i>clickListener</i>
-        hinzugefügt. Um dies zu tun mussten wir die entsprechenden buttons anhand der <i>id</i>`s identifizieren.
-        Den zu ändernden Text in <i>h2</i> haben wir hingegen über seinen <i>tag</i> identifiziert. Da es im Dokument nur ein Element mit diesem tag gibt,
-        hat es den index "0" in der Liste der <i>h2</i> tags. 
+    <p class="text-font">Durch den im <i>script</i> Tag defineirten JavaScript Code haben wir jedem <i>button</i> einen <i>clickListener</i>
+        hinzugefügt. Um dies zu tun mussten wir die entsprechenden Buttons anhand der <i>id</i>`s identifizieren.
+        Den zu ändernden Text in <i>h2</i> haben wir hingegen über einen <i>tag</i> identifiziert. Da es im Dokument
+        nur ein Element mit diesem Tag gibt, hat es den index "0" in der Liste der <i>h2</i> Tags. 
     </p>
 
 
@@ -212,8 +212,8 @@
 
 
     <h2>7. Einkaufsliste</h2>
-    <p class="text-font">Eine Einkaufsliste auf Basis der DOM API. Jeder Punkt auf der Einkaufsliste lässt sich individuell löschen.
-        Außerdem lässt sich die defaultmenge von 1 belibig ändern.
+    <p class="text-font">Eine Einkaufsliste auf Basis von DOM Manipulation. Jeder Punkt auf der Einkaufsliste lässt sich individuell löschen.
+        Außerdem lässt sich die Defaultmenge von 1 belibig ändern.
     </p>
     <htmlviewer-component src="Content\DOM\Beispiele\einkaufsliste.html" height-offset="100"></htmlviewer-component>
     <codebox-component title="einkaufsliste.html" src="Content\DOM\Beispiele\einkaufsliste.html"></codebox-component>
@@ -232,9 +232,9 @@
     <codebox-component title="rednerliste.html" src="Content\DOM\Beispiele\rednerliste.html"></codebox-component>
 
     <p class="text-font">Der <i>Hinzufügen</i> Button triggered ein Event, welches einen neuen Redner erstellt.
-        Das bedeutet es wird ein <i>li</i> Listen Element mit dem i, TExtfeld befindlichen namen erstellt und zur Rednerliste hinzugefügt.
+        Das bedeutet es wird ein <i>li</i> Listen Element mit dem im Textfeld befindlichen namen erstellt und zur Rednerliste hinzugefügt.
         Für jeden Redner wird ein <i>Timer</i> Objekt instanziiert. Dieser Timer besteht aus den entsprechende
-        steuerFunktionen (start, stop) einem <i>p</i> Element um die zeit zu repräsentieren sowie einem Start Stop Button.
+        Steuerfunktionen, einem <i>p</i> Element um die Zeit zu repräsentieren sowie einem Start Stop Button.
         Durch <i>closure</i> ist der Timer ausschließlich über diese Steuerfunktionen verwendbar. Die Variablen sind isoliert.
     </p>
 

@@ -5,12 +5,14 @@
 </head>
 <div class="container">
     <h1>Einführung</h1>
-    <p  class="text-font">Dieses Kapitel behandelt die Einführung in die Webentwicklung unter
-        anwendung der Strukturierungssprache <i>HTML5</i> und der Gestaltungssorache <i>css</I>
+    <p  class="text-font">Dieses Kapitel behandelt die Einführung in die Webentwicklung, unter
+        anwendung der Markupsprache <i>HTML5</i> und der Gestaltungssprache <i>css</I>.
     </p>
 
+
+
     <h2>1. HTTP Statuscode</h2>
-    <p  class="text-font">Im nachfolgenden eine Liste der wichtigsten HTTP status codes. Diese werden innerhalb 
+    <p  class="text-font">Im nachfolgenden eine Liste der wichtigsten HTTP Status-Codes. Diese werden innerhalb 
         des <i>response</i> oder <i></i>request</i> <i>Heders</i> gesendet.
     </p>
     
@@ -43,7 +45,17 @@
             </tr>
         </table>
         <p class="reference">Quelle: [29.01.2021] https://de.wikipedia.org/wiki/HTTP-Statuscode</p> 
-    </div> 
+    </div>
+
+
+    <p class="text-font">In einer Webanwendung benötigen Sie eine OPTIONS-Anfrage, die die Optionen des Servers vor dem eigentlichen Zugriff erfragen soll.
+        Aus Performanzgründen soll die Abfrage jedoch cacheable sein. Wie könnten Sie dafür eine Lösung angehen?
+    </p>
+    
+    <p class="text-font">Options ist normalerweise nicht cacheable.
+        Die einfachste möglichkeit wäre ein (cachable) GET Request.<br>
+        Die Serverantwort (OPTIONS Response) kann jedoch auch unter Verwendeung der POST Methode so wie jede andere Serverantwort manuell gespeichert werden.
+    </p>
 
 
 
@@ -52,9 +64,9 @@
 
 
     <h2>2. Wireframe with HTML and CSS</h2>
-    <p class="text-font">Das Grundgerüst einer Webseite bildet der <i>HTML</i> Code, durch welchen die einzelnen grafischen Elemente der Seite representiert werden.
+    <p class="text-font">Das Grundgerüst einer Webseite bildet der <i>HTML</i> Code, durch welchen die einzelnen grafischen Elemente der Seite repräsentiert werden.
     </p>
-    <p class="text-font">Das genauere Aussehen dieser <i>HTML</i> elemente wird durch sogenannte <i> CSS Stylesheets</i> definiert.
+    <p class="text-font">Das genauere Aussehen dieser <i>HTML</i> Elemente wird durch sogenannte <i> CSS Stylesheets</i> definiert.
     </p>
     <p class="text-font">Ein Überblick des Zusammenspiels dieser beider Technologien zeigen die folgenden Beispiele.
         Vergleichen sie die Bilder mit den tatsächlich gerenderten Forms. Das Nachprogrammieren von Wireframes ist eine Kunst für sich.
@@ -73,7 +85,7 @@
     <codebox-component><!--
     <link rel="stylesheet" href="./surveyForm.css">
     --></codebox-component>
-    <p class="text-font">Um das Defaultlayout unserer Elemente und deren konkretere Positionierung zu ändern referenzieren wir im <i>header</i> einen <i>CSS Stylesheet</i> file.
+    <p class="text-font">Um das Defaultlayout unserer Elemente und deren konkretere Positionierung zu ändern referenzieren wir im <i>header</i> einen <i>CSS Stylesheet</i> File.
     </p>
 
     <codebox-component title="surveyForm.css" src="Content/Einfuehrung/Beispiel/surveyForm.css"></codebox-component>
@@ -91,15 +103,12 @@
         <p class="reference">Original Tribute Page</p> 
     </div>
 
-    <div class="info-box">
-        <p class="text-font">Dieses Beispiel verwendet ein Absolutes Layout.
-        </p>
-    </div>
-
     <htmlviewer-component src="Content\Einfuehrung\Beispiel\tributePage.html"></htmlviewer-component>
     <codebox-component title="tributePage.html" src="Content\Einfuehrung\Beispiel\tributePage.html"></codebox-component>
 
 
+
+    
 
     <h3>Wireframe: Product Landing Page</h3>
 

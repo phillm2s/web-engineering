@@ -17,8 +17,8 @@
     <h2>Wandeln Sie Ihren LitElement WWW-Navigator aus Aufgabe 7.3 in eine Progressive Web App um.</h2>
     <p  class="text-font">
        Im folgenden ein <i>Mockup</i> des WWW - Navigators aus Übung 5.4.<br>
-       Dabei wurde die "Lit-Element-Menü-Navigator" Komponente aus Übung 7 Wiederverwendet, sowie eine
-       Komponente zum laden und darstellen von Textinhalten aus Json Dateine erstellt.
+       Dabei wurde die "Lit-Element-Menü-Navigator" Komponente aus Übung 7 wiederverwendet, sowie eine
+       Komponente zum laden und darstellen von Textinhalten aus Json Dateien erstellt.
        Die PWA kann <a href="Content\PWA\WWW-Navigator.zip" target="_blank" rel="noopener noreferrer">
         <button class="in-text-button">HIER</button></a> heruntergeladen werden.
     </p>
@@ -36,17 +36,16 @@
         dieses <a href="https://www.youtube.com/watch?v=WbbAPfDVqfY&ab_channel=dcode" target="_blank" rel="noopener noreferrer">
         <button class="in-text-button">Video</button></a>.</p>
     <p class="text-font">
-        Als IDE habe ich wie immer VS code verwendet und zum Testen den Google Chrome Browser.<br>
+        Als IDE habe ich VS Code verwendet und zum Testen den Google Chrome Browser.<br>
         Außerdem die VS Code extension "Live Server" zum einfachen hosten eines lokalen Webservers.
         Extra Frameworks habe ich nicht verwendet (lediglich die lit library).
-        Das erstellen aller minimal benötigten Elemente für die PWA war rellativ einfach,
-        wobei der Inhalt (WWW-Navigator) sehr minimal gehalten wurde.
+        Das erstellen aller minimal benötigten Elemente für die PWA war rellativ einfach.
      </p>
 
 
      <h3>Beschreiben Sie hier Ihre Probleme und Lösungskonzepte:</h3>
      <p class="text-font">
-        Das mit abstand größte Problem war die erstellung eines gültigen HTTPS Zertifikat,
+        Das mit abstand größte Problem war die erstellung eines gültigen HTTPS Zertifikat für den lokalen Webserver,
         da sonst der Webworker nicht funktioniert.
         Die von mir verwendete Webserver extention verlangte dabei nicht nur nach einem Zertifikat,
         sondern auch nach dem in einer separaten Datei gespeicherten Private key.

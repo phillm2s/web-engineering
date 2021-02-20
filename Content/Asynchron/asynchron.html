@@ -5,14 +5,14 @@
 </head>
 <div class="container">
     <h1>Asynchron</h1>
-    <p  class="text-font">Die moderne Webentwicklung setzt nichtmehr auf einfaches Synchrones abarbeiten von Code, sondern auf asyncrone
-        programmierung mittels Events. D.h einzelne Listener warten auf das Eintreten von bestimmten Ereignissen welche neben dem Hauptthread
+    <p  class="text-font">Die moderne Webentwicklung setzt nichtmehr auf einfaches Synchrones abarbeiten von Code, sondern auf asynchrone
+        Programmierung mittels Events. D.h einzelne Listener warten auf das Eintreten von bestimmten Ereignissen welche neben dem Hauptprozess
         bzw. anderen Ereignissen paralel abgearbeitet wird.
     </p>
 
     <p  class="text-font">Auch wenn der Browser selbst und die darunter liegenden Ressourcen multithreaded verarbeitet werden,
-        werden von außen eingereichte Events Javascript intern in einem einzigen Thread ausgeführt. Das heißt es gibt keine Nebenläufigkeitseffekte
-        wie <i>Deadlocks</i>, <i>Starvation</i> oder die notwendikeit von <i>synchronisation</i>.
+        werden von außen eingereichte Events Javascriptintern <b>in einem einzigen Thread</b> ausgeführt. Das heißt es gibt <b>keine Nebenläufigkeitseffekte</b>
+        wie <i>Deadlocks</i>, <i>Starvation</i> oder die Notwendikeit von <i>synchronisation</i>.
     </p>
 
 
@@ -20,8 +20,8 @@
 
 
     <h2>1. Metamorphose des WWW</h2>
-    <p  class="text-font">In heutigen Webanwendungen wird wesentlich mehr asyncrone Programmierung verwendet als ncoh vor einigen Jahren.
-        In der modernen Webentwicklung bewegt man sich zunehmend weg von zentralen Kontrollstrukturen wie einem main Controller, hin zu
+    <p  class="text-font">In heutigen Webanwendungen wird wesentlich mehr asyncrone Programmierung verwendet als noch vor einigen Jahren.
+        In der modernen Webentwicklung bewegt man sich zunehmend weg von zentralen Kontrollstrukturen wie einem <i>main Controller</i>, hin zu
          einer dezentralen <i>Event Driven Architecture</i>. Es wird also nurnoch asyncron auf <i>Events</i> reagiert.
     </p>
 
@@ -40,7 +40,7 @@
 
 
     <h2>3. Browser Eventloop</h2>
-    <p  class="text-font">Die Abarbeitung des codes geschieht mittels <i>Eventloop Prinzip</i> durch einen <i>Runtimestack</i>.
+    <p  class="text-font">Die Abarbeitung des Codes geschieht mittels <i>Eventloop Prinzip</i> durch einen <i>Runtimestack</i>.
         Abzuarbeitenden Funktionen werden dabei von der endlos laufenden Eventloop zur sequenziellen abarbeitung auf den Runtimstack gelegt. Greifen diese
         Funktionen wiederum auf andere Funktionen zu, so werden auch diese <b>oben</b> auf den Stack gelegt.
     </p>
@@ -48,15 +48,11 @@
         in die TaskQueue eingereiht um dann von der EventLoop in den Runtimestack gelegt zu werden, sobald der vorherige Prozess abgearbeitet wurde.
     </p>
     
-    <p  class="text-font">Da bis auf die <b>von außen</b> eingereichten Events keinerlei Paralelität vorhanden ist, muss darauf
+    <p  class="text-font">Da bis auf die <b>von außen</b> eingereichten Events keinerlei (echte) Paralelität vorhanden ist, muss darauf
         geachtet werden das die ausführung eines Events nicht zu viel Zeit beansprucht. Ansonsten kann es dazu führen das die Interaktion mit dem UI blockiert ist,
-        und entsprechende Events zwar gesammelt werden aber erst mit einer Verzögerung ausgeführt werden. Optimaler Weise ist ein Event in unter 1/60 Sekunde
+        und entsprechende Events zwar gesammelt werden aber erst mit einer Verzögerung ausgeführt werden. Optimalerweise ist ein Event in unter 1/60 Sekunde
         abgearbeitet, denn die Eventloop läuft mit 60 Hz
     </p>
-
-    <div class="info-box">
-        <p  class="text-font">Mittels <i>requestAnimationFrame(t)</i> können gezielt Tasks auf die Queue gelegt werden, welche dann priosisiert abgearbeitet werden.</p>
-    </div>
 
     <div style="width: fit-content; margin: auto;">
         <img class="illustration" style="width: 700px;" src="Content\Asynchron\Beispiele\EventLoop.png" alt="EventLoop">
@@ -80,8 +76,8 @@
         <p class="reference">Quelle: [11.02.2021] https://www.w3schools.com/js/js_ajax_intro.asp</p>
     </div>
 
-    <p class="text-font">Dies ermöglicht das bauen von <i>Fast Booting Web Pages</i>. Der Trick besteht dabei darin, als erstes nur die
-        absolut notwendigen Daten für eine erste interaktion zu laden. Bevor der User diese Interaktion durchführen kann kann der restliche Content nachgeladen werden.
+    <p class="text-font">Dies ermöglicht das Bauen von <i>Fast Booting Web Pages</i>. Der Trick besteht dabei darin, als erstes nur die
+        absolut notwendigen Daten für eine erste Interaktion zu laden. Bevor der User diese Interaktion durchführen kann kann der restliche Content nachgeladen werden.
     </p>
 
     <p class="text-font">AJAX kann durch das <i>XMLHttpRequest</i> Interface des Browsers verwendet werden.
@@ -100,12 +96,12 @@
     </p>
 
     <ul class="text-font">
-    <li><b>pending:</b> Der zustand wurde noch nicht entschieden.</li>
+    <li><b>pending:</b> Der Zustand wurde noch nicht entschieden.</li>
     <li><b style="color: green">resolved:</b> Ein Vorgang/Anfrage war erfolgreich.</li>
     <li><b style="color: red">rejected:</b> Ein Vorgang/Anfrage war nicht erfolgreich.</li>
     </ul>
     <p class="text-font">Ein Promise kann verwendet werden, um über den Erfolg eines asyncronen Vorgangs zu informieren.
-        Die Methode <i>vorgang()</i> gibt ein Promise zurück welches nach abschluss der MEthode einen entsprechenden Wert annimmt
+        Eine Methode <i>vorgang()</i> gibt ein Promise zurück welches nach abschluss der Methode einen entsprechenden Wert annimmt
         (<span style="color: green">Resolve</span>, <span style="color: red">rejact</span>).</br>
     </p>   
     <div style="border-style: solid;border-color: var(--orange); border-radius: 7px; width: fit-content; padding: 10px;">
@@ -119,25 +115,25 @@
     </div>
 
     <div class="info-box">
-        <p class="text-font"> <i>Promise.then()</i> gibt selbst auch wieder ein Promise zurück, so das man belibig viele viele <i>.then()</i>´s
-            aneinnder hängen kann. Damit umgeht man unübersichtliche callback verschachtlungen (Callback Hell).
+        <p class="text-font"> <i>Promise.then()</i> gibt selbst auch wieder ein Promise zurück, so das man belibig viele <i>.then()</i>´s
+            aneinnder hängen kann. Damit umgeht man unübersichtliche callback Verschachtlungen (Callback Hell).
         </p>
     </div>
 
     <p class="text-font">In folgendem Szenario werden asynchron 2 Textfiles geladen.
         Nachdem das erste Promise resolved wird passiert noch nicht viel.
-        Erst nachdem auch das Zweite Promise resolved wurde, ist die </br><i>if(text_a!=null && text_b!=null)</i> Bedingung erfüllt und
+        Erst nachdem auch das zweite Promise resolved wurde, ist die </br><i>if(text_a!=null && text_b!=null)</i> Bedingung erfüllt und
         der Inhalt der beiden Files wird zeilenweise Konkatiniert.
     </p>
 
     <htmlviewer-component src="Content\Asynchron\Beispiele\promise.html" height-offset="200"></htmlviewer-component>
     <codebox-component title="promise.html" src="Content\Asynchron\Beispiele\promise.html"></codebox-component>
 
-    <p class="text-font">neben <i>promise.then()</i> und <i>promise.catch()</i> gibt es noch die weniger häufig verwendeten Methoden:
+    <p class="text-font">Neben <i>promise.then()</i> und <i>promise.catch()</i> gibt es noch die Methoden:
     </p>
     <ul class="text-font">
         <li><b>Promiese.all():</b> .then() wird ausgeführt, wenn alle übergebenen Promises <b>erfolgreich</b> ausgeführt wurden.</li>
-        <li><b>Promiese.rache():</b> .then() wird ausgeführt, sobald das erste übergebene Prmise <b>erfolgreich</b> ausgeführt wurde.
+        <li><b>Promiese.race():</b> .then() wird ausgeführt, sobald das erste übergebene Prmise <b>erfolgreich</b> ausgeführt wurde.
         die anderen Promises werden nicht abgebrochen!</li>
         <li><b>Promiese.allSettled():</b> .then() wird ausgeführt, wenn alle übergebenen Promises ausgeführt wurden (egal ob resolved oder rejected).</li>
     </ul>
@@ -150,8 +146,8 @@
 
     <div class="info-box">
         <p class="text-font">Promises werden in eine seperate <i>Microtask Queue</i> eingereiht
-            und <b>vollständig</b> innerhalb eines einzelnen <i>EventLoop</i> Durchlaufs nach dem aktuellen <i>Macrotask</i>
-            abgearbeitet. Promises können also auhc mit über 60Hz abgearbeitet werden.
+            und nach dem aktuellen <i>Macrotask</i> <b>vollständig</b> innerhalb eines einzelnen <i>EventLoop</i>'s durchlaufen.
+            Promises können also auch mit über 60Hz abgearbeitet werden.
         </p>
     </div>
 
@@ -166,7 +162,7 @@
         Dieses warten ist jedoch nicht blockierend sondern gleicht der Promise.then() Funktionalität
         in einer verkürzten Schreibweise.
     </p>
-    <p class="text-font">Um dies weiter zu veranschaulichen im Folgenden Zwei funktional gleiche Methoden.
+    <p class="text-font">Um dies weiter zu veranschaulichen kommen im Folgenden zwei funktional gleiche Methoden.
     </p>
     <p class="text-font" style="text-align: center; margin-top: 16px; margin-bottom: 0;"><b>Mit Promise</b></p>
     <codebox-component><!--
@@ -184,7 +180,7 @@
     }
     --></codebox-component>
 
-    <p class="text-font">Potentielle Fehler die unter der verwendung von promises durch <i>.catch()</i> behandelt werden,
+    <p class="text-font">Potentielle Fehler die unter der Verwendung von Promises durch <i>.catch()</i> behandelt werden,
     werden unter <i>async await</i> mittels traditionellem <i>try and catch</i> abgefangen.</p>
 
     <p class="text-font">Promises und async await lassen sich auch kombinieren in dem Beispielsweise auf das Ergebnis einer Reihe
@@ -193,7 +189,7 @@
     </p>
 
 
-    <p class="text-font">Hier nochmal das File Merge Beispiel, aber diesmal mit asyn/await statt Promises.
+    <p class="text-font">Hier nochmal das File Merge Beispiel, mit asyn/await statt Promises.
     </p>
     <htmlviewer-component src="Content\Asynchron\Beispiele\asyncAwait.html" height-offset="200"></htmlviewer-component>
     <codebox-component title="asyncAwait.html" src="Content\Asynchron\Beispiele\asyncAwait.html"></codebox-component>
@@ -205,7 +201,7 @@
 
     <h2>7. Web Worker</h2>
     <p class="text-font">Die Webworker Technologie stellt eine API zur <b>echten</b> paralelen Ausführung von Code bereit.
-        Dies kann Beispielsweise für besonders rechenaufwändige Prozesse notwendig sein.
+        Dies kann beispielsweise für besonders rechenaufwändige Prozesse notwendig sein.
     </p>
 
     <p class="text-font">Ein Webworker besteht aus einem einfachen EventListener in einem extenren JavaScript File.
@@ -225,7 +221,7 @@
     <codebox-component title="worker.js" src="Content\Asynchron\Beispiele\worker.js"></codebox-component>
 
     <div class="info-box">
-        <p class="text-font">Um die interaktion mit Webworken zu vereinfachen gibt es eine Vielzahl von libraries.
+        <p class="text-font">Um die Interaktion mit Webworken zu vereinfachen gibt es eine Vielzahl von Libraries.
         </p>
     </div>
 

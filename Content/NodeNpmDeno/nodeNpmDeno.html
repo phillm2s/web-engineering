@@ -11,11 +11,11 @@
 
     <h2>1. Node.js</h2>
     <p class="text-font">Um die Vorteile von JavaScript wie non-blocking IO und die hohe Nebenläufigkeit durch
-        das Event Driven Design auch serverseitig einsetzen zu können wurde die Google V8 Engine
-        in ein <i>c++</i> Programm eingebettet. So entstand die Serverseitig einsetzbare Laufzeitumgebung node.js.
+        das Event Driven Design auch serverseitig einsetzen zu können, wurde die Laufzeitumgebung node.js Entwickelt.
+        Dabei Handelt es sich um eine in ein <i>c++</i> Programm eingebettete Version der Google V8 Engine.
     </p>
     <p class="text-font">Ehemals serverseitig blockierende
-        aufrufe durch <i>php</i>wie Datenbankabfragen konnten seitdem durch asynchrones JavaScript ersetzt werden.
+        aufrufe durch <i>php</i>wie Datenbankabfragen konnten seiher durch asynchrones JavaScript durchgeführt werden.
     </p>
 
     <div class="info-box">
@@ -23,12 +23,12 @@
         </p>
     </div>
 
-    <p class="text-font">Durch die verwendung von JavaScript auf Client und Server Seite sind JavaScript Entwickler
-        vielseitig einsetzbar. Trotzdem ist node.js nur selten auf aktuellen Webservern vertreten.
-        Dies wird allerdings auch dadurch beinflusst, dass einigen node.js Server hinter <i>Apache</i> Proxys versteckt sind.
+    <p class="text-font">Durch die Verwendung von JavaScript auf Client und Server Seite sind JavaScript Entwickler
+        vielseitig einsetzbar. Trotzdem ist node.js eher selten auf aktuellen Webservern vertreten.
+        Die Statistiken werden allerdings auch dadurch beinflusst, dass einigen node.js Server hinter <i>Apache</i> Proxys versteckt sind.
     </p>
 
-    <p class="text-font">Zwischen der Server und Client Seitigen javaScript Entwicklung gibt es einige grundlegende unterschiede.
+    <p class="text-font">Zwischen der Server und Clientseitigen JavaScript-Entwicklung gibt es einige grundlegende Unterschiede.
     </p>
     <div style="width: fit-content;">
         <table class ="table">
@@ -78,8 +78,8 @@
     </div>
 
     <h3>Beispiel 1</h3>
-    <p class="text-font">Das nachfolgende node.js Kommandozeilen programm, erzeugt eine Textdatei, welche
-        als Kommandozeilen Parameter einen Wert erwartet, welcher die Anzahl der zu erzeugenden Zeilen mit der
+    <p class="text-font">Das nachfolgende node.js Kommandozeilenprogramm, erzeugt eine Textdatei, welche
+        als Kommandozeilenparameter einen Wert erwartet, welcher die Anzahl der zu erzeugenden Zeilen mit der
         jeweiligen Zeilennummer und einem "." erwartet. Der Übergabeparameter kann auch einen "_" enthalten, sodass
         10_000 als 10000 interpretiert wird. 
     </p>
@@ -90,7 +90,7 @@
     <p class="text-font">In diesem Beispiel wird die Performance zweier Methoden zum laden von Files praktisch verglichen.
     </p>
     <p class="text-font">Es werden jeweils 2 Dateien mit 1 Millionen Zeilen mit der jeweiligen Methode asynchron geladen und zeilenweise konkatiniert.
-        Die Beiden Vorgänge werden dann anhand der Benötigten Zeit verglichen.
+        Die Beiden Vorgänge werden dann anhand der benötigten Zeit verglichen.
     </p>
 
     <p class="text-font">Methode 1: Laden der beider Files durch <i>.readFile</i>.
@@ -101,8 +101,8 @@
     <p class="text-font">Methode 2: Laden beider Files durch <i>createReadStream</i>.
     </p>
     <codebox-component title="merge_streams.js" src="Content\NodeNpmDeno\Beispiele\merge_streams.js"></codebox-component>
-    <p class="text-font">Die Stream API ist besonders performant wenn es darum geht sehr große Files zu laden bzw teile des Files (<i>chunks</i>)</i> zu 
-        verwenden noch bevor der vollständige File geladen wurde. In unserem Beispiel heißt das, der Merge und Schreib -Process kann schon beginnen, soald von beiden Files
+    <p class="text-font">Die Stream API ist besonders performant wenn es darum geht sehr große Files zu laden bzw. Teile des Files (<i>chunks</i>)</i> zu 
+        verwenden, noch bevor der vollständige File geladen wurde. In unserem Beispiel heißt das, der Merge und Schreibprozess kann schon beginnen, soald von beiden Files
         jeweils der erste <i>chunk</i> geladen wurde.
     </p>
 
@@ -129,22 +129,22 @@
     <p class="text-font">Npm steht für <b>N</b>ode <b>P</b>ackage <b>M</b>anager und wird verwendet um node.js Pakete zu
         verwalten. Um die verschiedenen Versionen von node.js selbst zu verwalten kann der
         nvm (<b>N</b>ode <b>V</b>ersion <b>M</b>anager) verwendet werden. Beide Manager lassen sich nach der Installation
-        via Kommandozeile verwenden.
+        via Kommandozeile nutzen.
     </p>
 
     <p class="text-font">Geladene Pakete können mittels <i>CommonJS</i> in den JavaScript Namespace geladen werden.<br>
-        <b>Kurzscreibweise:</b> <i>const package = requiere("packageName");</i> .<br>
+        <b>Kurzschreibweise:</b> <i>const package = requiere("packageName");</i> .<br>
         <i>requiere()</i> kapselt eine Reihe komplexerer Prozesse die im Hintergrund durchgeführt werden.
     </p>
 
-    <p class="text-font">Seit ES6 gibt es auch die Alternative Packete durch<br>
+    <p class="text-font">Seit ES6 gibt es auch die Alternative, Packete durch<br>
         <i>import {functionA, functionB} from "./myFile.mjs"</i><br>
         zu importieren. die zu importierenden Funktionen müssen dabei um das <i>export</i> Schlüsselwort
         erweitert werden.
     </p>
 
     <div class="info-box">
-        <p class="text-font">Die beiden Methoden sollten allerdings nicht vermischt werden.<br>
+        <p class="text-font">Die beiden Methoden sollten nicht vermischt werden.<br>
             <b>Kein</b> <i>requiere</i> in <i>.mjs</i>.</br>
             <b>Kein</b> <i>import</i> in <i>.js</i>.
         </p>
@@ -162,15 +162,15 @@
         <button class="in-text-button">Einrichtungsschritte</button></a> durchlaufen
         werden. <!-- https://stackoverflow.com/questions/15551779/open-link-in-new-tab-or-window -->
     </p>
-    <p class="text-font">Der Folgende beispielhafte Webserver stellt eine einfache weboberfläche bereit.
-        Die Post Methode veranschaulicht die Client zu Server kommunikation mittels JSON Nachrichten.
+    <p class="text-font">Der Folgende beispielhafte Webserver stellt eine einfache Weboberfläche bereit.
+        Die Post Methode veranschaulicht die Client zu Server Kommunikation mittels JSON Nachrichten.
     </p>
     <codebox-component title="expressServer.js" src="Content\NodeNpmDeno\Beispiele\expressServer.js"></codebox-component>
 
 
 
     <h2>4. deno.land</h2>
-    <p class="text-font">Bei deno handelt es sich um eine JavaScript & TypeScript Laufzeitumgebung vom selben Entwickler (Ryan Dahl), wie node.
+    <p class="text-font">Bei deno handelt es sich um eine JavaScript & TypeScript Laufzeitumgebung vom selben Entwickler (Ryan Dahl), wie node.js.
         Da bei node.js Securityaspekte wie der Systemzugriff vernachlässigt wurden, wollte der Entwickler dies bei deno besser machen.
     </p>
     <div style="width: 100%; display: flex; flex-wrap: wrap;">
@@ -188,7 +188,7 @@
                 <li>ES6 Import funktionalität.</li>
                 <li>Abhängigkeiten via URL's.</li>
                 <li>Integrierter Packetmanager (kein npm notwendig).</li>
-                <li>Besonders Browserkompatibel.</li>
+                <li>Besonders browserkompatibel.</li>
                 <li>Breiter Web API support.</li>
                 <li>Konfiguierbare Dateisystem Securitypolicy.</li>
                 <li>Systemzugriffe über spezielle Kanäle</li>
