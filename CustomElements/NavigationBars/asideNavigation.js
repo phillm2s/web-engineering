@@ -60,8 +60,8 @@ customElements.define('menueaside-component',
             this.as.forEach(element => {
                 element.addEventListener("click",function(){
                     if(selected!==null){
-                        selected.style.backgroundColor="unset";
-                        selected.style.opacity="unset";
+                        selected.style.backgroundColor="";
+                        selected.style.opacity="";
                     }
                     element.style.backgroundColor="#5f5f5f";
                     element.style.opacity="0.8";
